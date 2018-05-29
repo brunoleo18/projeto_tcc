@@ -6,9 +6,9 @@ $config = array();
 
 if(ENVIRONMENT == 'development'){
 	
-	define("BASE_URL","http//localhost/ProjetoMVC/");
+	define("BASE_URL","http://localhost/Projeto_tcc/");
 
-	$config["dbname"] ='estrutura_mvc';
+	$config["dbname"] ='bdloc';
 	$config['host'] = 'localhost';
 	$config['dbuser'] = 'root';
 	$config['dbpass'] = '';
@@ -17,7 +17,7 @@ if(ENVIRONMENT == 'development'){
 	//se for servidor externo
 	
 
-	$config['dbname'] ='estrutura_mvc';
+	$config['dbname'] ='bdloc';
 	$config['host'] = 'localhost';
 	$config['dbuser'] = 'root';
 	$config['dbpass'] = '';

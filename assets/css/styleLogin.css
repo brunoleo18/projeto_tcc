@@ -1,0 +1,25 @@
+body{
+	padding-top: 100px; 
+	background-image: url('http://localhost/Projeto_tcc/assets/image/carro1.jpg');
+	background-repeat: no-repeat;
+	background-size: 100%; 
+	overflow: auto; padding: 3em;
+}
+input{
+	 width: 200px; 
+	 padding: 10px; 
+	 border-radius: 5px; 
+	 text-align: center;
+
+}
+
+
+.div1{
+
+
+	width: 400px; 
+	height: 300px;
+	background-color: LightBlue; [
+	border-radius: 20px;
+
+}
