@@ -2,9 +2,18 @@
 class notfoundController extends controller {
 
 	public function index() {
-		//$this->loadView('404', array());
+		
+		$dados = array(
 
-		echo "não existe";
+			'url'=> 'bruno'
+
+
+
+		);
+
+		$this->loadTemplete('404', $dados);
+
+		
 	}
 
 }
