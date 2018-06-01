@@ -1,9 +1,6 @@
 <?php 
 
 
-require_once "Pessoa.php";
-
-
 class Usuario extends Pessoa{
 
     private $senha; 
@@ -14,30 +11,47 @@ class Usuario extends Pessoa{
     private $sexo;
     private $id_end;
 
+   //metodo para validar login
+    public function logar($email,$senha){
 
-public function logar($email,$senha){
+        $sql = $this->db->prepare("SELECT * from usuario where email=? and senha=?");
 
-    $sql = $this->db->prepare("SELECT * from usuario where email=? and senha=?");
+        $sql->execute(array($email, $senha));
 
-    $sql->execute(array($email, $senha));
 
-        if($sql->rowCount() > 0){
+        $row = $sql->rowCount();
+        
+
+        if( $row > 0){
 
             $array = $sql->fetch();          
-           
+            
             $_SESSION['nome'] = $array['nome'];
-            $this->setTipo($array['tipo']);         
 
-}else{
+            $this->setTipo($array['tipo']); 
 
-    echo "usuario ou senha não existe";
-}
 
-           
+        }else{
+
+            $this->setTipo(2);
+        }        
+    }
+
+    //metodo que insere usuario no banco
+
+    public function insertUser($nome,$email,$senha, $cpf,$telefone,$tipo,$dataNasc,$rg,$sexo,$id_end ){
+
+        $sql = $this->db->prepare("INSERT INTO usuario SET nome = ?, email = ?, senha = ?, cpf = ?, telefone = ?, tipo = ?, dataNasc= ?, rg= ?, sexo= ?, id_end= ?");
+        $sql->execute(array($nome,$email ,$senha, $cpf,$telefone,$tipo,$dataNasc,$rg,$sexo, $id_end));
+
     }
 
 
-		// metodos Get's
+
+
+
+
+// metodos Get's-------------------------------------------------------------------------------------------------
 
     function getId_end(){
 
@@ -85,7 +99,7 @@ public function logar($email,$senha){
     }
 
     function setSenha($senha) {
-        $this->senha = md5($senha);
+        $this->senha = $senha;
     }
 
 
@@ -105,7 +119,7 @@ public function logar($email,$senha){
         $this->sexo = $sexo;
     }
 
-        
+    
 
 
 }

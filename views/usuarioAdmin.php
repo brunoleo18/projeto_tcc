@@ -46,7 +46,7 @@
 
 		<nav id="menu" >
     <ul style="list-style: none; padding: 10px; margin: 0px;">
-        <li><a href="cadastroUsuario.php">Cadastro de Usuarios.</a></li>
+        <li><a href="<?php echo BASE_URL;?>chamarTelas/telaCadastro">Cadastro de Usuarios.</a></li>
         <li><a href="#">Cadastro de Veiculos.</a></li>
         <li><a href="#">Cadastro de Clientes.</a></li>
         <li><a href="#">Cadastro de Reservas.</a></li>
