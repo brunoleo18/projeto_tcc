@@ -57,10 +57,10 @@
 
 	</div>
 
-	<div style="width: 500px; height: 100%; border-color: red; position: relative; margin-top: 30px; ">
+	<div style="width: 300px; height: 10%;  position: relative; margin-top: 30px; ">
 		<nav id="menu2" style="display: inline;">
     <ul style="list-style: none; padding: 10px; margin: 0px;">
-        <li><a href="#">Pesquisar Usuarios.</a></li>
+        <li><a href="<?php echo BASE_URL;?>usuario/mostrar">Pesquisar Usuarios.</a></li>
         <li><a href="#">Pesquisar Veiculos.</a></li>
         <li><a href="#">pesquisar Clientes.</a></li>
         <li><a href="#">Pesquisar Reservas.</a></li>
@@ -70,6 +70,13 @@
 		
 
 	</div>
+    <div style="width: 500px; height: 100px; border-color: red; background-color: blue; position: absolute; margin-top: 30px; margin-left: 610px; margin-top: 0px; ">
+       
+
+       <h1>vc tem x Reservas novas</h1>
+        
+
+    </div>
 
 
 </body>

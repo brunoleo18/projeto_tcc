@@ -11,6 +11,9 @@ class Usuario extends Pessoa{
     private $sexo;
     private $id_end;
 
+//variavel que armazena dados do select
+    private $rows;
+
    //metodo para validar login
     public function logar($email,$senha){
 
@@ -46,12 +49,29 @@ class Usuario extends Pessoa{
 
     }
 
+    // exibi todos os usuarios
+    public function exibir(){
+
+        $sql = $this->db->prepare("SELECT * from usuario ORDER BY tipo desc");
+
+        $sql->execute();
 
 
+        $row = $sql->rowCount();
 
+        $array = $sql->fetchall();
+
+        $this->setRows($array);
+
+
+    }
 
 
 // metodos Get's-------------------------------------------------------------------------------------------------
+    function getRows(){
+
+        return $this->rows;
+    }    
 
     function getId_end(){
 
@@ -89,6 +109,10 @@ class Usuario extends Pessoa{
     }
 
       //metodos set's
+
+    function setRows($rows) {
+        $this->rows = $rows;
+    }
 
     function setId_end($id_end) {
         $this->id_end = $id_end;

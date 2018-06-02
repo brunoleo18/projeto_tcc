@@ -101,10 +101,30 @@ class usuarioController extends controller{
 
 		$usuario->insertUser($nome,$email ,$senha, $cpf,$telefone,$tipo,$dataNasc,$rg,$sexo, $id_end);
 
+		header('location: http://localhost/Projeto_tcc/chamarTelas/telaCadastro');
 
-	    $this->loadTemplete('cadastroUsuario');
+
+	      // $this->loadTemplete('cadastroUsuario');
 
 	}
+
+
+	public function mostrar(){
+
+		$usuario = new Usuario;
+
+		$usuario->exibir();
+
+		$dados = array('dados' => $usuario->getRows());
+
+
+
+
+		$this->loadTemplete('exibirUsuario',$dados);
+	}
+
+
+
 
 
 }
