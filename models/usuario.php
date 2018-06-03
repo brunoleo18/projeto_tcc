@@ -42,17 +42,21 @@ class Usuario extends Pessoa{
 
     //metodo que insere usuario no banco
 
-    public function insertUser($nome,$email,$senha, $cpf,$telefone,$tipo,$dataNasc,$rg,$sexo,$id_end ){
+    public function insertUser($nome,$email,$senha, $cpf,$telefone,$tipo,$dataNasc,$rg,$sexo){
 
-        $sql = $this->db->prepare("INSERT INTO usuario SET nome = ?, email = ?, senha = ?, cpf = ?, telefone = ?, tipo = ?, dataNasc= ?, rg= ?, sexo= ?, id_end= ?");
-        $sql->execute(array($nome,$email ,$senha, $cpf,$telefone,$tipo,$dataNasc,$rg,$sexo, $id_end));
+        $sql = $this->db->prepare("INSERT INTO usuario SET nome = ?, email = ?, senha = ?, cpf = ?, telefone = ?, tipo = ?, dataNasc= ?, rg= ?, sexo= ?");
+        $sql->execute(array($nome,$email ,$senha, $cpf,$telefone,$tipo,$dataNasc,$rg,$sexo));
 
     }
 
+ 
     // exibi todos os usuarios
-    public function exibir(){
+       
+        public function exibir(){
 
-        $sql = $this->db->prepare("SELECT * from usuario ORDER BY tipo desc");
+       // $sql = $this->db->prepare("SELECT * from usuario ORDER BY tipo desc");
+
+        $sql = $this->db->prepare("SELECT * from usuario inner join endereco on usuario.cpf = endereco.id_cpf");
 
         $sql->execute();
 
@@ -66,6 +70,17 @@ class Usuario extends Pessoa{
 
     }
 
+
+    public function deletar($cpf){
+
+         $sql = $this->db->prepare("DELETE from usuario WHERE cpf= ?");
+
+        $sql->execute(array($cpf));
+
+
+    }
+
+    
 
 // metodos Get's-------------------------------------------------------------------------------------------------
     function getRows(){

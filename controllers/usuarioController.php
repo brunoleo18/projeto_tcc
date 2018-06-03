@@ -76,15 +76,14 @@ class usuarioController extends controller{
 		$telefone = $usuario->getTelefone();
 		$senha = $usuario->getSenha(); 	
 
-		$usuario->getEndereco()->setRua($_POST['rua']);
-		$usuario->getEndereco()->setNum($_POST['num']);
-		$usuario->getEndereco()->setBairro($_POST['bairro']);
-		$usuario->getEndereco()->setCidade($_POST['cidade']);
-		$usuario->getEndereco()->setCep($_POST['cep']);
-		$usuario->getEndereco()->setEstado($_POST['estado']);
-		$usuario->getEndereco()->setComplemento($_POST['complemento']);
-
-		
+		$usuario->getEndereco()->setRua(addslashes($_POST['rua']));
+		$usuario->getEndereco()->setNum(addslashes($_POST['num']));
+		$usuario->getEndereco()->setBairro(addslashes($_POST['bairro']));
+		$usuario->getEndereco()->setCidade(addslashes($_POST['cidade']));
+		$usuario->getEndereco()->setCep(addslashes($_POST['cep']));
+		$usuario->getEndereco()->setEstado(addslashes($_POST['estado']));
+		$usuario->getEndereco()->setComplemento(addslashes($_POST['complemento']));
+		$usuario->getEndereco()->setId_cpf(addslashes($_POST['cpf']));		
 
 		$rua = $usuario->getEndereco()->getRua();
 		$num = $usuario->getEndereco()->getNum();
@@ -93,16 +92,20 @@ class usuarioController extends controller{
 		$cep = $usuario->getEndereco()->getCep();
 		$estado = $usuario->getEndereco()->getEstado();
 		$complemento = $usuario->getEndereco()->getComplemento();
+		$id_cpf = $usuario->getEndereco()->getId_cpf();
 
-		$usuario->getEndereco()->inserirEnd($rua,$num,$bairro,$cidade,$estado,$cep,$complemento);
+		echo  $id_cpf;
+
+		$usuario->insertUser($nome,$email ,$senha, $cpf,$telefone,$tipo,$dataNasc,$rg,$sexo);
 
 
-		$id_end = $usuario->getEndereco()->getIdEndereco();
+		$func = $usuario->getEndereco()->inserirEnd($id_cpf,$rua,$num,$bairro,$cidade,$estado,$cep,$complemento);
 
-		$usuario->insertUser($nome,$email ,$senha, $cpf,$telefone,$tipo,$dataNasc,$rg,$sexo, $id_end);
+		var_dump($_POST);
 
+		
+		
 		header('location: http://localhost/Projeto_tcc/chamarTelas/telaCadastro');
-
 
 	      // $this->loadTemplete('cadastroUsuario');
 
@@ -124,6 +127,19 @@ class usuarioController extends controller{
 	}
 
 
+	public function editar($cpf){
+
+		echo $cpf;
+	}
+
+	public function excluir($cpf){
+
+		$usuario = new Usuario;
+
+		$usuario->deletar($cpf);
+
+		header('location: http://localhost/Projeto_tcc/usuario/mostrar');
+	}
 
 
 

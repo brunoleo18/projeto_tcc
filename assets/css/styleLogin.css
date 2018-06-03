@@ -24,12 +24,11 @@ body{
 
 }
 
-.sub{
+input.but{
+
+
+width: 3000px;
+}
 
 	
-	height: 25px; 
-	width: 35px; 
-	padding: 10px; 
-	border-radius: 5px;
-	text-align: center;;
-}
+	

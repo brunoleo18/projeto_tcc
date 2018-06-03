@@ -12,54 +12,56 @@ class Endereco extends model{
     private $estado;
     private $cep;
     private $complemento;
+    private $id_cpf;
 
 
- public function inserirEnd($rua,$num,$bairro,$cidade,$estado,$cep,$complemento){
-
-       
-     //$this->setIdEndereco($this->db->lastInsertId());
-     $sql = $this->db->prepare("INSERT INTO endereco SET rua = ?, num = ?, bairro = ?, cidade = ?, estado = ?, cep = ?, complemento= ?");
-
-        $sql->execute(array($rua,$num,$bairro,$cidade,$estado,$cep,$complemento));
-
-        $ult = $this->db->lastInsertId();
-
-        $this->setIdEndereco($ult);
+    public function inserirEnd($id_cpf,$rua,$num,$bairro,$cidade,$estado,$cep,$complemento){
 
 
-         }
+
+        $sql = $this->db->prepare("INSERT INTO endereco SET id_cpf = ?, rua = ?, num = ?, bairro = ?, cidade = ?, estado = ?, cep = ?, complemento= ?");
+
+        $sql->execute(array($id_cpf,$rua,$num,$bairro,$cidade,$estado,$cep,$complemento));
+
+
+    }
 
 //metodos get's
 
-    function getIdEndereco() {
+    public function getId_cpf(){
+
+        return $this->id_cpf;
+    }
+
+    public function getIdEndereco() {
         return $this->idEndereco;
     }
 
-    function getRua() {
+    public function getRua() {
         return $this->rua;
     }
 
-    function getNum() {
+    public function getNum() {
         return $this->num;
     }
 
-    function getBairro() {
+    public function getBairro() {
         return $this->bairro;
     }
 
-    function getCep() {
+    public function getCep() {
         return $this->cep;
     }
 
-    function getCidade() {
+    public function getCidade() {
         return $this->cidade;
     }
 
-    function getEstado() {
+    public function getEstado() {
         return $this->estado;
     }
 
-    function getComplemento() {
+    public function getComplemento() {
         return $this->complemento;
     }
 
@@ -67,37 +69,40 @@ class Endereco extends model{
        // metdos set's
 
 
+    public function setId_cpf($id_cpf) {
+        $this->id_cpf = $id_cpf;
+    }
 
-    function setRua($rua) {
+    public function setRua($rua) {
         $this->rua = $rua;
     }
 
-    function setNum($num) {
+    public function setNum($num) {
         $this->num = $num;
     }
 
-    function setBairro($bairro) {
+    public function setBairro($bairro) {
         $this->bairro = $bairro;
     }
 
-    function setCep($cep) {
+    public function setCep($cep) {
         $this->cep = $cep;
     }
 
-    function setCidade($cidade) {
+    public function setCidade($cidade) {
         $this->cidade = $cidade;
     }
 
-    function setEstado($estado) {
+    public function setEstado($estado) {
         $this->estado = $estado;
     }
 
-    function setComplemento($complemento) {
+    public function setComplemento($complemento) {
         $this->complemento = $complemento;
     }
 
 
-    function setIdEndereco($idEndereco) {
+    public function setIdEndereco($idEndereco) {
         $this->idEndereco = $idEndereco;
     }
 

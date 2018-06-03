@@ -22,7 +22,7 @@
 						<td><input class="nome" type="password" name="senha" required></td>
 					</tr>
 					<tr><td></td>
-						<td><input type="submit" class="sub"  src="<?php echo BASE_URL;?>/assets/image/cadeado.jpg" name="enviar" value="Logar" ></td></tr>
+						<td><input type="image" class="but" src="http://localhost/Projeto_tcc//assets/image/entrar.jpg" name="enviar"  ></td></tr>
 
 
 

@@ -5,8 +5,7 @@ unset($_POST);
 <!DOCTYPE html>
 <html>
 <head>
-	<script language="JavaScript">
-history.forward();
+	
 </script>  
 	<meta charset="utf-8">
 	<title>Cadastro de Usuario</title>
@@ -37,7 +36,7 @@ history.forward();
 
 		<a href="<?php echo BASE_URL;?>chamarTelas/voltar"><input type="button" name="" value="voltar"></a>
 
-		<form action="<?php echo BASE_URL;?>usuario/inserirUser" method="POST">
+		<form action="<?php echo BASE_URL;?>usuario/inserirUser" method="POST" >
 
 			<fieldset >
 
