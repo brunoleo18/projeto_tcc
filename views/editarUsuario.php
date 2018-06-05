@@ -1,6 +1,5 @@
 <?php 
-unset($_POST);
-
+//var_dump($dados);
 ?>
 <!DOCTYPE html>
 <html>
@@ -34,49 +33,51 @@ unset($_POST);
 	
 	<div class="div_user">
 
-		<a href="<?php echo BASE_URL;?>chamarTelas/voltar"><input type="button" name="" value="voltar"></a>
+		<a href="<?php echo BASE_URL;?>usuario/mostrar"><input type="button" name="" value="voltar"></a>
 
-		<form action="<?php echo BASE_URL;?>usuario/inserirUser" method="POST" >
+		<form action="<?php echo BASE_URL;?>usuario/editar/alt" method="POST" >
+
+			<input type="hidden" name="cpfAntigo" value="<?php echo $dados['cpf'];?>">
 
 			<fieldset >
 
-				<legend style="font-size: 30px;">Cadastro de usuario</legend>
+				<legend style="font-size: 30px;">Alterar Dados</legend>
 
 				<table >
 
 					<tr>
 
 						<td><label>Nome:</label></td>
-						<td><input type="text" name="nome" size="50" placeholder="Nome Completo" required "></td>
+						<td><input type="text" name="nome" size="50" value="<?php echo $dados['nome'];?>" ></td>
 
 						<td><label>CPF:</label></td>
-						<td><input type="CPF" name="cpf" placeholder="000.000.000-00" size="14" required autocomplete="off"></td>
+						<td><input type="CPF" name="cpf" value="<?php echo $dados['cpf'];?>" size="14" required autocomplete="off"></td>
 
 						<td><label>RG:</label>
-							<input type="rg" name="rg" size="20"></td>
+							<input type="rg" name="rg" value="<?php echo $dados['rg'];?>" size="20"></td>
 
 
 						</tr>
 
 						<tr>
 							<td><label>Email:</label></td>
-							<td><input type="email" name="email" size="50" autocomplete="off" required></td>
+							<td><input type="email" name="email" value="<?php echo $dados['email'];?>" size="50" autocomplete="off"></td>
 
 							<td><label>Sexo:</label></td>
 							<td><select name="sexo" required="">
-								<option>Selecionar</option>
+								<option value="<?php echo $dados['sexo'];?>"><?php echo $dados['sexo'];?></option>
 								<option value="M">Masculino</option>
 								<option value="F">Feminino</option>
 							</select></td>
 
 							<td><label>D Nasc:</label>
-								<input type="date" name="data"></td>
+								<input type="date" value="<?php echo $dados['dataNasc'];?>" name="data"></td>
 
 							</tr>			
 
 							<tr><td><label>Tipo:</label></td>
 								<td><select name="tipo" required="">
-									<option>seleciona</option>
+									<option value="<?php echo $dados['tipo'];?>" ><?php if($dados['tipo'] == 1){ echo "Administrador";}else{echo "Usuario";}?> </option>
 									<option value="1">Administrador</option>
 									<option value="0">Usuario</option>
 								</select></td>
@@ -85,9 +86,9 @@ unset($_POST);
 
 							<tr>
 								<td><label>Telefone:</label></td>
-								<td><input type="Telefone" name="telefone" placeholder="00 0000 0000"></td>
-								<td><label>Senha:</label></td>
-								<td><input type="password" name="senha"></td>
+								<td><input type="Telefone" name="telefone" value="<?php echo $dados['telefone'];?>" "></td>
+								<td></td>
+								
 
 							</tr>
 
@@ -99,26 +100,26 @@ unset($_POST);
 
 							<tr>
 								<td><label>Rua:</label></td>
-								<td><input type="text" name="rua" size="30"></td>
+								<td><input type="text" name="rua" value="<?php echo $dados['rua'];?>" size="30"></td>
 
 								<td><label>Nº:</label></td>
-								<td><input type="text" name="num"></td>	
+								<td><input type="text" value="<?php echo $dados['num'];?>" name="num"></td>	
 
 								<td><label>Bairro:</label></td>
-								<td><input type="text" name="bairro" size="30"></td>
+								<td><input type="text" value="<?php echo $dados['bairro'];?>" name="bairro" size="30"></td>
 
 							</tr>
 
 							<tr>
 								<td>Cidade:</td>
-								<td><input type="text" name="cidade" size="30"></td>
+								<td><input type="text" name="cidade" value="<?php echo $dados['cidade'];?>" size="30"></td>
 								<td><label>CEP:</label></td>
-								<td><input type="text" name="cep"></td>
+								<td><input type="text" value="<?php echo $dados['cep'];?>"name="cep"></td>
 
 								<td><label>Estado:</label></td>
 								<td>
 									<select name="estado">
-										<option>selecionar</option>
+										<option style="color: red;" value="<?php echo $dados['estado'];?>"><?php echo $dados['estado'];?></option>
 										<option value="AC">Acre</option>
 										<option value="AL">Alagoas</option>
 										<option value="AP">Amapá</option>
@@ -152,10 +153,10 @@ unset($_POST);
 
 							<tr>
 								<td><label>Complemento:</label></td>
-								<td><input type="text" name="complemento" size="50"></td>
+								<td><input type="text" name="complemento" value="<?php echo $dados['complemento'];?>" size="50"></td>
 							</tr>
 
-							<tr><td><input type="submit" name="enviar" value="Cadastrar_Usuario" ></td>
+							<tr><td><input type="submit" name="enviar" value="Atualizar" ></td>
 								<td></td>
 							</tr>
 
