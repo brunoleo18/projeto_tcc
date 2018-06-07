@@ -1,3 +1,8 @@
+<?php
+if(isset($_SESSION['nome']) && !empty($_SESSION['nome'])){
+
+	?>
+
 	<!DOCTYPE html>
 	<html>
 	<head>
@@ -48,3 +53,7 @@
 </html>
 
 
+<?php
+}
+
+	?>

@@ -15,6 +15,10 @@ class chamarTelasController extends controller{
 		$this->loadTemplete('cadastroUsuario');
 	}
 
+	public function telaVeiculo(){
+
+		$this->loadTemplete('cadastroVeiculo');
+	}
 
 
 

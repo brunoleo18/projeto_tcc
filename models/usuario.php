@@ -59,7 +59,7 @@ class Usuario extends Pessoa{
             //header('location: http://localhost/Projeto_tcc/chamarTelas/telaCadastro')
             
         }else{
-            
+
             // se o cpf não esta cadastrado ele passa e Aqui verifica se o EMAIL ja esta cadastrado
 
             $sql = $this->db->prepare("SELECT * from usuario where email=?");
@@ -101,7 +101,7 @@ class Usuario extends Pessoa{
 
        // $sql = $this->db->prepare("SELECT * from usuario ORDER BY tipo desc");
 
-        $sql = $this->db->prepare("SELECT * from usuario inner join endereco on usuario.cpf = endereco.id_cpf ORDER BY nome asc");
+        $sql = $this->db->prepare("SELECT * from usuario left outer join endereco on usuario.cpf = endereco.id_cpf ORDER BY nome asc");
 
         $sql->execute();
 
@@ -118,33 +118,59 @@ class Usuario extends Pessoa{
 
     public function deletar($cpf){
 
-     $sql = $this->db->prepare("DELETE from usuario WHERE cpf= ?");
+       $sql = $this->db->prepare("DELETE from usuario WHERE cpf= ?");
 
-     $sql->execute(array($cpf));
-
-
- }
+       $sql->execute(array($cpf));
 
 
-
- public function editar($cpf2){
-
-    $sql = $this->db->prepare("SELECT * from usuario inner join endereco on usuario.cpf = endereco.id_cpf where usuario.cpf = ?");
-
-    $sql->execute(array($cpf2));
+   }
 
 
-    $row = $sql->rowCount();
 
-    if($row > 0){
+   public function SelectEditar($cpf_del){
 
-        $array = $sql->fetch();
+    if($cpf_del != 'alt'){
 
-        $this->setRows($array);
+        $sql = $this->db->prepare("SELECT * from usuario left outer join endereco on usuario.cpf = endereco.id_cpf where usuario.cpf = ?");
+
+        $sql->execute(array($cpf_del));
+
+
+        $row = $sql->rowCount();
+
+        if($row > 0){
+
+            $array = $sql->fetch();
+
+            $this->setRows($array);
+        }
+
+
     }
+
 }
 
 
+public function editar($nome,$email, $cpf,$telefone,$tipo,$dataNasc,$rg,$sexo,$cpf2){
+
+    $sql = $this->db->prepare("UPDATE usuario SET cpf= ?, nome= ?, email= ?,  telefone= ?, tipo= ?, dataNasc= ?, rg= ?, sexo= ? WHERE cpf= ?");
+
+    $sql->execute(array($cpf,$nome,$email,$telefone,$tipo,$dataNasc,$rg,$sexo,$cpf2));
+
+
+
+    $this->getEndereco()->editar($this->getEndereco()->getRua(),$this->getEndereco()->getNum(),$this->getEndereco()->getBairro(),$this->getEndereco()->getCidade(),$this->getEndereco()->getEstado(),$this->getEndereco()->getCep(),$this->getEndereco()->getComplemento(),$cpf2);
+
+
+
+    
+    echo "<SCRIPT>
+    alert('Usuario <b>".$nome."</b> alterado com sucesso');
+     </SCRIPT>";
+   // 
+   
+
+}
 
 // metodos Get's-------------------------------------------------------------------------------------------------
 function getRows(){

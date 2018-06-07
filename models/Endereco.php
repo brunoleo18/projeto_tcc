@@ -26,6 +26,15 @@ class Endereco extends model{
 
     }
 
+
+    public function editar($rua,$num, $bairro,$cidade,$estado,$cep,$complemento,$cpf2){
+
+    $sql = $this->db->prepare("UPDATE endereco SET rua= ?, num= ?, bairro= ?, cidade=?, estado= ?, cep= ?, complemento= ? WHERE id_cpf= ?");
+
+    $sql->execute(array($rua,$num, $bairro,$cidade,$estado,$cep,$complemento,$cpf2));
+
+}
+
 //metodos get's
 
     public function getId_cpf(){

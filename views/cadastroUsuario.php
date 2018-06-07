@@ -1,7 +1,7 @@
-<?php 
-unset($_POST);
+<?php
+if(isset($_SESSION['nome']) && !empty($_SESSION['nome'])){
 
-?>
+	?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -178,3 +178,7 @@ unset($_POST);
 
 
 
+<?php
+}
+
+	?>

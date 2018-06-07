@@ -1,3 +1,7 @@
+<?php
+if(isset($_SESSION['nome']) && !empty($_SESSION['nome'])){
+
+    ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,7 +51,7 @@
 		<nav id="menu" >
     <ul style="list-style: none; padding: 10px; margin: 0px;">
         <li><a href="<?php echo BASE_URL;?>chamarTelas/telaCadastro">Cadastro de Usuarios.</a></li>
-        <li><a href="#">Cadastro de Veiculos.</a></li>
+        <li><a href="<?php echo BASE_URL;?>chamarTelas/telaVeiculo">Cadastro de Veiculos.</a></li>
         <li><a href="#">Cadastro de Clientes.</a></li>
         <li><a href="#">Cadastro de Reservas.</a></li>
         <li><a href="#">Manutenção</a></li>
@@ -82,4 +86,6 @@
 </body>
 </html>
 
-
+<?php
+}
+    ?>

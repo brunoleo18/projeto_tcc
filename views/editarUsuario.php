@@ -1,6 +1,7 @@
-<?php 
-//var_dump($dados);
-?>
+<?php
+if(isset($_SESSION['nome']) && !empty($_SESSION['nome'])){
+
+	?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -177,5 +178,7 @@
 		</body>
 		</html>
 
-
+<?php
+}
+	?>
 

@@ -1,3 +1,8 @@
+<?php
+if(isset($_SESSION['nome']) && !empty($_SESSION['nome'])){
+
+	?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -82,7 +87,7 @@ foreach ($dados as $exibir) {
 		<td>".$exibir['dataNasc']."</td>
 		<td>".$exibir['rg']."</td>
 		<td>".$exibir['sexo']."</td>
-		<td>Rua: ".$exibir['11'].", Nº: ".$exibir['12'].", Bairro: " .$exibir['13'].",<br> Cidade: ".$exibir['14'].", UF: ".$exibir['15'].",CEP: ".$exibir['16'].", <br>Complemento: ".$exibir['17']." </td>";
+		<td>Rua: ".$exibir['11'].", Nº: ".$exibir['12'].",<br> Bairro: " .$exibir['13'].",<br> Cidade: ".$exibir['14'].", UF: ".$exibir['15'].",CEP: ".$exibir['16'].", <br>Complemento: ".$exibir['17']." </td>";
 
 		echo "<td> <a title='Editar' href='http://localhost/Projeto_tcc/usuario/editar/".$exibir['cpf']."'><img id='img1' src='http://localhost/Projeto_tcc/assets/image/editar.png'></a>ou<a title='Excluir' href='http://localhost/Projeto_tcc/usuario/excluir/".$exibir['cpf']."'><img id='img1' src='http://localhost/Projeto_tcc/assets/image/excluir.png'></a></td>";
 	
@@ -97,3 +102,10 @@ foreach ($dados as $exibir) {
 </div>
  </body>
 </html>
+
+<?php
+}
+
+
+
+	?>
