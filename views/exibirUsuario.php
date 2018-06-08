@@ -8,43 +8,8 @@ if(isset($_SESSION['nome']) && !empty($_SESSION['nome'])){
 <head>
 	<title>lista de usuarios</title>
 	<meta charset="utf-8">
-	<style type="text/css">		
-body{
-	background-color: #40E0D0;
-}
-
-.divTab{
-	background-color:#E0FFFF;
-	padding: 10px;
+	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL;?>assets/css/telas.css"">
 	
-}
-.tab{
-	font-size: 15px; 
-	text-align: : center;	
-}
-#tr{
-	text-transform: capitalize;
-	background-color: #A9A9A9;
-	text-align:  center;
-}
-h2 {
-
-	text-align:  center;
-	color: #4169E1;
-	text-transform: capitalize;
-}
-
-#img1{
-
-	width: 50px;
-	height: 50px;
-}
-
-#nome{
-	text-transform: capitalize;
-}
-
-	</style>
 </head>
 <body>
 

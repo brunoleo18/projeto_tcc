@@ -65,7 +65,7 @@ if(isset($_SESSION['nome']) && !empty($_SESSION['nome'])){
 		<nav id="menu2" style="display: inline;">
     <ul style="list-style: none; padding: 10px; margin: 0px;">
         <li><a href="<?php echo BASE_URL;?>usuario/mostrar">Pesquisar Usuarios.</a></li>
-        <li><a href="#">Pesquisar Veiculos.</a></li>
+        <li><a href="<?php echo BASE_URL;?>veiculo/mostrar">Pesquisar Veiculos.</a></li>
         <li><a href="#">pesquisar Clientes.</a></li>
         <li><a href="#">Pesquisar Reservas.</a></li>
         <li><a href="#">Pesquisar Manutenção</a></li>
