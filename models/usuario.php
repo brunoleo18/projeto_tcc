@@ -81,8 +81,7 @@ class Usuario extends Pessoa{
                 $sql = $this->db->prepare("INSERT INTO usuario SET nome = ?, email = ?, senha = ?, cpf = ?, telefone = ?, tipo = ?, dataNasc= ?, rg= ?, sexo= ?");
                 $sql->execute(array($nome,$email ,$senha, $cpf,$telefone,$tipo,$dataNasc,$rg,$sexo));
 
-                $this->getEndereco()->inserirEnd($this->getEndereco()->getId_cpf(),$this->getEndereco()->getRua(),$this->getEndereco()->getNum(),$this->getEndereco()->getBairro(),$this->getEndereco()->getCidade(),$this->getEndereco()->getEstado(),$this->getEndereco()->getCep(),$this->getEndereco()->getComplemento());
-
+                
                 echo "<SCRIPT>
                 alert('usuario".$nome." Cadstrado com sucesso');
                 location.href='http://localhost/Projeto_tcc/chamarTelas/telaCadastro';
@@ -101,7 +100,7 @@ class Usuario extends Pessoa{
 
        // $sql = $this->db->prepare("SELECT * from usuario ORDER BY tipo desc");
 
-        $sql = $this->db->prepare("SELECT * from usuario left outer join endereco on usuario.cpf = endereco.id_cpf ORDER BY nome asc");
+        $sql = $this->db->prepare("SELECT * from usuario ORDER BY nome asc");
 
         $sql->execute();
 
@@ -131,7 +130,7 @@ class Usuario extends Pessoa{
 
     if($cpf_del != 'alt'){
 
-        $sql = $this->db->prepare("SELECT * from usuario left outer join endereco on usuario.cpf = endereco.id_cpf where usuario.cpf = ?");
+        $sql = $this->db->prepare("SELECT * from usuario  where cpf = ?");
 
         $sql->execute(array($cpf_del));
 
@@ -157,9 +156,6 @@ public function editar($nome,$email, $cpf,$telefone,$tipo,$dataNasc,$rg,$sexo,$c
 
     $sql->execute(array($cpf,$nome,$email,$telefone,$tipo,$dataNasc,$rg,$sexo,$cpf2));
 
-
-
-    $this->getEndereco()->editar($this->getEndereco()->getRua(),$this->getEndereco()->getNum(),$this->getEndereco()->getBairro(),$this->getEndereco()->getCidade(),$this->getEndereco()->getEstado(),$this->getEndereco()->getCep(),$this->getEndereco()->getComplemento(),$cpf2);
 
 
 

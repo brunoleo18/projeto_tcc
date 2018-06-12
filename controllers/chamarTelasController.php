@@ -21,6 +21,18 @@ class chamarTelasController extends controller{
 	}
 
 
+	public function telaCliente(){
+
+		$this->loadTemplete('cadastroCliente');
+	}
+
+
+	public function telaReserva(){
+
+		$this->loadTemplete('cadastroReserva');
+	}
+
+
 
 }
 

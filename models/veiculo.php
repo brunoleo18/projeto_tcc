@@ -39,7 +39,6 @@ class veiculo extends model{
 
 
 
-	//verifica se o CPF ja esta cadastrado
 		$sql = $this->db->prepare("SELECT * from veiculo where placa=?");
 		$sql->execute(array($placa));
 		$row = $sql->rowCount();
@@ -82,13 +81,44 @@ class veiculo extends model{
 
 	}
 
+	public function selectEditar($id){
+
+		$sql = $this->db->prepare("SELECT * FROM veiculo where id= ?");
+
+		$sql->execute(array($id));
+
+
+		$row = $sql->rowCount();
+
+		if($row > 0){
+
+			$array = $sql->fetch();
+
+			$this->setRowV($array);
+
+
+		}
 
 
 
+	}
+
+	public function editar($id,$placa,$modelo,$marca,$ano_fabr,$combustivel,$valor_diaria,$km_inicial,$km_atual,$chassis,$documento){
+
+
+		$sql = $this->db->prepare("UPDATE veiculo SET  placa = ?, modelo = ?, marca = ?, ano_fabri = ?,  combustivel= ?, valor_d = ?, km_i= ?, Km_a= ?, chassi= ?, documento= ? WHERE id= ?");
+
+		$sql->execute(array($placa,$modelo,$marca,$ano_fabr,$combustivel,$valor_diaria,$km_inicial,$km_atual,$chassis,$documento, $id));
+
+
+		echo "<SCRIPT>
+			alert('Veiculo de placa ".$placa.", alterado com sucesso');
+			
+			</SCRIPT>";
 
 
 
-
+	}
 
 
 //metodos get's e set's

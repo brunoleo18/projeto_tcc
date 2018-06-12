@@ -49,7 +49,7 @@ class usuarioController extends controller{
 	public function inserirUser(){		
 
 		$usuario = new Usuario;
-		$end= new Endereco;
+		
 
 		
 		$usuario->setNome(addslashes($_POST['nome']));
@@ -62,10 +62,6 @@ class usuarioController extends controller{
 		$usuario->setTelefone(addslashes($_POST['telefone']));		
 		$usuario->setSenha(addslashes(md5($_POST['senha'])));
 
-		$usuario->setEndereco($end);
-
-
-
 		$nome = $usuario->getNome();
 		$cpf = $usuario->getCpf();		
 		$rg = $usuario->getRg();		
@@ -76,26 +72,7 @@ class usuarioController extends controller{
 		$telefone = $usuario->getTelefone();
 		$senha = $usuario->getSenha(); 	
 
-		$usuario->getEndereco()->setRua(addslashes($_POST['rua']));
-		$usuario->getEndereco()->setNum(addslashes($_POST['num']));
-		$usuario->getEndereco()->setBairro(addslashes($_POST['bairro']));
-		$usuario->getEndereco()->setCidade(addslashes($_POST['cidade']));
-		$usuario->getEndereco()->setCep(addslashes($_POST['cep']));
-		$usuario->getEndereco()->setEstado(addslashes($_POST['estado']));
-		$usuario->getEndereco()->setComplemento(addslashes($_POST['complemento']));
-		$usuario->getEndereco()->setId_cpf(addslashes($_POST['cpf']));		
-
-		$rua = $usuario->getEndereco()->getRua();
-		$num = $usuario->getEndereco()->getNum();
-		$bairro = $usuario->getEndereco()->getBairro();
-		$cidade = $usuario->getEndereco()->getCidade();
-		$cep = $usuario->getEndereco()->getCep();
-		$estado = $usuario->getEndereco()->getEstado();
-		$complemento = $usuario->getEndereco()->getComplemento();
-		$id_cpf = $usuario->getEndereco()->getId_cpf();
-
 		
-
 		$usuario->insertUser($nome,$email ,$senha, $cpf,$telefone,$tipo,$dataNasc,$rg,$sexo);
 
 
@@ -208,7 +185,7 @@ class usuarioController extends controller{
 		$usuario->deletar($cpf);
 
 		header('location: http://localhost/Projeto_tcc/usuario/mostrar');
-
+		
 	}
 
 

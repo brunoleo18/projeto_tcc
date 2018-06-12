@@ -18,7 +18,7 @@ if(isset($_SESSION['nome']) && !empty($_SESSION['nome'])){
 
 	<h2 >Lista De Veiculos cadastrados</h2>
 
-<table class="tabV" border="5" >
+<table class="tabV" s >
 
 
 	
