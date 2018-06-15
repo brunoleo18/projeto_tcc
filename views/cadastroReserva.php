@@ -30,7 +30,7 @@ if(isset($_SESSION['nome']) && !empty($_SESSION['nome'])){
 </style>
 </head>
 
-<body style="background-color: #BEBEBE;">
+<body style="background-color: #E0FFFF;">
 	
 	<div class="div_user">
 
@@ -104,7 +104,7 @@ if(isset($_SESSION['nome']) && !empty($_SESSION['nome'])){
 											<option>seleciona</option>
 											<option value="aberta">aberta</option>
 											<option value="andamento">Andamento</option>
-											<option value="fechada">Fechada</option>
+											<option value="finalizada">Finalizada</option>
 										</select></td>
 
 									</tr> 

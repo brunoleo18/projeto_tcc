@@ -2,85 +2,105 @@
 if(isset($_SESSION['nome']) && !empty($_SESSION['nome'])){
 
     ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title><?php echo "Bem vindo ".$_SESSION['nome']; ?></title>
+    <!DOCTYPE html>
+    <html>
+    <head>
+       <meta charset="utf-8">
+       <title><?php echo "Bem vindo ".$_SESSION['nome']; ?></title>
 
-	<style type="text/css">
-		
-		#menu ul li{
-			display: inline;
-		}
+       <style type="text/css">
 
-		#menu ul li a {
-            padding: 2px 10px;
-            display: inline-block;
+       #menu ul li{
+         display: inline;
+     }
 
-            /* visual do link */
-            background-color:#EDEDED;
-            color: #333;
-            text-decoration: none;
-            border-bottom:3px solid #EDEDED;
-        }
-        #menu ul li a:hover {
-            background-color:#D6D6D6;
-            color: #6D6D6D;
-            border-bottom:3px solid #EA0000;
-        }
+     #menu ul li a {
+        padding: 2px 10px;
+        display: inline-block;
 
-        #menu2 {
-        	font-size: 20px;
-        }
+        /* visual do link */
+        background-color:#EDEDED;
+        color: #333;
+        text-decoration: none;
+        border-bottom:3px solid #EDEDED;
+    }
+    #menu ul li a:hover {
+        background-color:#D6D6D6;
+        color: #6D6D6D;
+        border-bottom:3px solid #EA0000;
+    }
 
-        #menu2 ul li{
-        	padding: 10px 5px;
-        	background-color:#EDEDED;
-            color: #333;
-            text-decoration: none;
-            border-bottom:3px solid #EDEDED;
+    #menu2 {
+       font-size: 20px;
+   }
 
-        }
-	</style>
+   #menu2 ul li{
+       padding: 10px 5px;
+       background-color:#EDEDED;
+       color: #333;
+       text-decoration: none;
+       border-bottom:3px solid #EDEDED;
+
+   }
+</style>
 </head>
 <body style="background-color: #BEBEBE;">
 
 	<div style=" text-align: center; width: 100%; height: 90px; background-color: #008B8B; border: 2px; margin: 0px; margin-top: 0px; position: relative;">
 
 		<nav id="menu" >
-    <ul style="list-style: none; padding: 10px; margin: 0px;">
-        <li><a href="<?php echo BASE_URL;?>chamarTelas/telaCadastro">Cadastro de Usuarios.</a></li>
-        <li><a href="<?php echo BASE_URL;?>chamarTelas/telaVeiculo">Cadastro de Veiculos.</a></li>
-        <li><a href="<?php echo BASE_URL;?>chamarTelas/telaCliente">Cadastro de Clientes.</a></li>
-        <li><a href="<?php echo BASE_URL;?>chamarTelas/telaReserva">Cadastro de Reservas.</a></li>
-        <li><a href="#">Manutenção</a></li>
-    </ul>
-</nav>
+            <ul style="list-style: none; padding: 10px; margin: 0px;">
+                <li><a href="<?php echo BASE_URL;?>chamarTelas/telaCadastro">Cadastro de Usuarios.</a></li>
+                <li><a href="<?php echo BASE_URL;?>chamarTelas/telaVeiculo">Cadastro de Veiculos.</a></li>
+                <li><a href="<?php echo BASE_URL;?>chamarTelas/telaCliente">Cadastro de Clientes.</a></li>
+                <li><a href="<?php echo BASE_URL;?>chamarTelas/telaReserva">Cadastro de Reservas.</a></li>
+                <li><a href="#">Manutenção</a></li>
+            </ul>
+        </nav>
 
-
-	</div>
-
-	<div style="width: 300px; height: 10%;  position: relative; margin-top: 30px; ">
-		<nav id="menu2" style="display: inline;">
-    <ul style="list-style: none; padding: 10px; margin: 0px;">
-        <li><a href="<?php echo BASE_URL;?>usuario/mostrar">Pesquisar Usuarios.</a></li>
-        <li><a href="<?php echo BASE_URL;?>veiculo/mostrar">Pesquisar Veiculos.</a></li>
-        <li><a href="<?php echo BASE_URL;?>cliente/mostrar"">pesquisar Clientes.</a></li>
-        <li><a href="#">Pesquisar Reservas.</a></li>
-        <li><a href="#">Pesquisar Manutenção</a></li>
-    </ul>
-</nav>
-		
-
-	</div>
-    <div style="width: 500px; height: 100px; border-color: red; background-color: blue; position: absolute; margin-top: 30px; margin-left: 610px; margin-top: 0px; ">
-       
-
-       <h1>vc tem x Reservas novas</h1>
-        
 
     </div>
+
+    <div style="width: 300px; height: 10%; float:left; position: absolute; margin-top: 30px; ">
+      <nav id="menu2" style="display: inline;">
+        <ul style="list-style: none; padding: 10px; margin: 0px;">
+            <li><a href="<?php echo BASE_URL;?>usuario/mostrar">Pesquisar Usuarios.</a></li>
+            <li><a href="<?php echo BASE_URL;?>veiculo/mostrar">Pesquisar Veiculos.</a></li>
+            <li><a href="<?php echo BASE_URL;?>cliente/mostrar"">pesquisar Clientes.</a></li>
+            <li><a href="<?php echo BASE_URL;?>reserva/mostrar/aberta">Pesquisar Reservas.</a></li>
+            <li><a href="#">Pesquisar Manutenção</a></li>
+        </ul>
+    </nav>
+
+
+</div>
+<div style="width: 500px; height: 100px; border-color: red; float:right; background-color: #B0E0E6; margin-top: 20px; margin-right: 200px; border-radius: 10px; position:relative; text-align: center;">
+
+    <?php
+
+    global $db;
+
+    $sql = $db->prepare("SELECT * FROM reservas where status='aberta'");
+
+    $sql->execute();
+
+
+    $dado = $sql->rowCount();
+
+
+
+ echo "<a href='".BASE_URL."reserva/mostrar/aberta'><h1>Você possui <b>".$dado."</b> novas Reservas!!</h1></a>";
+ 
+
+         
+
+    ?>
+
+
+   
+
+
+</div>
 
 
 </body>
@@ -88,4 +108,4 @@ if(isset($_SESSION['nome']) && !empty($_SESSION['nome'])){
 
 <?php
 }
-    ?>
+?>

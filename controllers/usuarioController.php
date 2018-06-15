@@ -73,7 +73,7 @@ class usuarioController extends controller{
 		$senha = $usuario->getSenha(); 	
 
 		
-		$usuario->insertUser($nome,$email ,$senha, $cpf,$telefone,$tipo,$dataNasc,$rg,$sexo);
+		$usuario->inserir($nome,$email ,$senha, $cpf,$telefone,$tipo,$dataNasc,$rg,$sexo);
 
 
 		     // $this->loadTemplete('cadastroUsuario');

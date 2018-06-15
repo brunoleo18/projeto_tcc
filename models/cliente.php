@@ -10,6 +10,7 @@ class Cliente extends Pessoa{
     private $dataNasc;
     private $rg;
     private $sexo;
+    private $endereco;
     private $id_end;
 
     //variavel que armazena dados do select
@@ -60,7 +61,7 @@ class Cliente extends Pessoa{
 
                 $this->getEndereco()->inserirEnd($this->getEndereco()->getId_cpf(),$this->getEndereco()->getRua(),$this->getEndereco()->getNum(),$this->getEndereco()->getBairro(),$this->getEndereco()->getCidade(),$this->getEndereco()->getEstado(),$this->getEndereco()->getCep(),$this->getEndereco()->getComplemento());
 
-               echo "<SCRIPT>
+                echo "<SCRIPT>
                 alert('usuario".$nome." Cadstrado com sucesso');
                 location.href='http://localhost/Projeto_tcc/chamarTelas/telaCliente';
                 </SCRIPT>";
@@ -95,16 +96,16 @@ class Cliente extends Pessoa{
 
     public function deletar($cpf){
 
-     $sql = $this->db->prepare("DELETE from cliente WHERE cpf= ?");
+       $sql = $this->db->prepare("DELETE from cliente WHERE cpf= ?");
 
-     $sql->execute(array($cpf));
-
-
- }
+       $sql->execute(array($cpf));
 
 
+   }
 
- public function SelectEditar($cpf_del){
+
+
+   public function SelectEditar($cpf_del){
 
     if($cpf_del != 'alt'){
 
@@ -194,6 +195,11 @@ function getDataAdmis() {
     return $this->dataAdmis;
 }
 
+public function getEndereco(){
+
+    return $this->endereco;
+}
+
       //metodos set's
 
 function setRows($rows) {
@@ -231,6 +237,12 @@ function setRg($rg) {
 
 function setSexo($sexo) {
     $this->sexo = $sexo;
+}
+
+function setEndereco($endereco){
+
+    $this->endereco = $endereco;
+
 }
 
 

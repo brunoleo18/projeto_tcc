@@ -14,6 +14,8 @@ class reserva extends model{
 	private $hora_saida;
 	private $hora_chegada;
 
+	private $row;
+
 
 	public function verificarDisponibilidade($veiculo,$cpf,$data_inicio,$data_fim,$status){
 
@@ -48,7 +50,36 @@ class reserva extends model{
 
 
 
-}
+	}
+
+	public function exibir($status){
+
+
+
+		$sql = $this->db->prepare("SELECT reservas.id_reserva,reservas.id_cliente,cliente.nome,cliente.email,veiculo.modelo,veiculo.placa,reservas.data_inicio,reservas.data_fim,reservas.status,reservas.hora_saida,reservas.hora_chegada,reservas.km_saida,reservas.km_chegada,reservas.km_rodados FROM reservas inner join veiculo on reservas.id_veiculo=veiculo.id inner join cliente on reservas.id_cliente= cliente.cpf WHERE reservas.status = ? ");
+
+		$sql->execute(array($status));
+
+		if($sql->rowCount() > 0){
+
+
+			$array = $sql->fetchall();
+
+			$this->setRow($array);
+		}else{
+
+
+			$array = array();
+
+
+			$this->setRow($array);
+
+
+		}
+
+
+
+	}
 
 
 
@@ -57,6 +88,10 @@ class reserva extends model{
 
 	public function getId() {
 		return $this->id;
+	}
+
+	public function getRow() {
+		return $this->row;
 	}
 
 	
@@ -100,7 +135,9 @@ class reserva extends model{
 		$this->id = $id;
 	}
 
-	
+	function setRow($row) {
+		$this->row = $row;
+	}
 
 	function setCpf_cliente($cpf_cliente) {
 		$this->cpf_cliente = $cpf_cliente;

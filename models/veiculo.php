@@ -1,7 +1,7 @@
 <?php
 
 
-class veiculo extends model{
+class veiculo extends modelAbstract{
 
 	private $id;
 	private $placa;

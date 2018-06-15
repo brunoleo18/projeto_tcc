@@ -31,7 +31,7 @@ class clienteController extends controller{
 		$cliente->setCnh(addslashes($_POST['cnh']));
 		$cliente->setCategoria(addslashes($_POST['categoria']));		
 		$cliente->setTelefone(addslashes($_POST['telefone']));		
-		$cliente->setProfissao(addslashes(md5($_POST['profissao'])));
+		$cliente->setProfissao(addslashes($_POST['profissao']));
 
 		$cliente->setEndereco($end);
 
@@ -127,7 +127,7 @@ class clienteController extends controller{
 		$cliente->setCnh(addslashes($_POST['cnh']));
 		$cliente->setCategoria(addslashes($_POST['categoria']));		
 		$cliente->setTelefone(addslashes($_POST['telefone']));		
-		$cliente->setProfissao(addslashes(md5($_POST['profissao'])));
+		$cliente->setProfissao(addslashes($_POST['profissao']));
 
 		$cliente->setEndereco($end);
 

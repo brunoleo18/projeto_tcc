@@ -4,12 +4,11 @@
 class Usuario extends Pessoa{
 
     private $senha; 
-    private $cpf;
     private $tipo;
     private $dataNasc;
     private $rg;
     private $sexo;
-    private $id_end;
+    
 
 //variavel que armazena dados do select
     private $rows;
@@ -42,7 +41,7 @@ class Usuario extends Pessoa{
 
     //metodo que insere usuario no banco
 
-    public function insertUser($nome,$email,$senha, $cpf,$telefone,$tipo,$dataNasc,$rg,$sexo){
+    public function inserir($nome,$email,$senha, $cpf,$telefone,$tipo,$dataNasc,$rg,$sexo){
 
       //verifica se o CPF ja esta cadastrado
         $sql = $this->db->prepare("SELECT * from usuario where cpf=?");
@@ -174,14 +173,6 @@ function getRows(){
     return $this->rows;
 }    
 
-function getId_end(){
-
-    return $this->id_end;
-}    
-
-function getCpf() {
-    return $this->cpf;
-}
 
 function getSenha() {
     return $this->senha;
@@ -213,14 +204,6 @@ function getDataAdmis() {
 
 function setRows($rows) {
     $this->rows = $rows;
-}
-
-function setId_end($id_end) {
-    $this->id_end = $id_end;
-}
-
-function setCpf($cpf) {
-    $this->cpf = $cpf;
 }
 
 function setSenha($senha) {

@@ -22,11 +22,13 @@
 						<td><input class="nome" type="password" name="senha" required></td>
 					</tr>
 					<tr><td></td>
-						<td><input type="image" class="but" src="http://localhost/Projeto_tcc//assets/image/entrar.jpg" name="enviar"  ></td></tr>
+						<td></td></tr>
 
 
 
 				</table>
+
+				<input type="image" style=" text-align: center;; width: 50px; height: 50px;" class="but" src="http://localhost/Projeto_tcc//assets/image/entrar.png" name="enviar"  >
 
 
 

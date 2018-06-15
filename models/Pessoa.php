@@ -2,63 +2,58 @@
 
 require_once "Endereco.php";
 
- class Pessoa extends model{
+abstract class Pessoa extends model{
 
  	//protected $dbp = $this->db;
 
- 	private $idPessoa;
-    private $nome;
- 	private $endereco;
- 	private $email;
- 	private $telefone;
+	private $cpf;
+	private $nome;
+	private $email;
+	private $telefone;
 
- 	public function setNome($nome){
+	public function setCpf($cpf) {
+		$this->cpf = $cpf;
+	}
 
- 		$this->nome = $nome;
- 	}
+	public function setNome($nome){
 
- 	public function setEndereco($endereco){
-
- 		$this->endereco = $endereco;
-
- 	}
-
- 	public function setEmail($email){
-
- 		$this->email = $email;
- 	}
-
- 	public function setTelefone($telefone) {
-            $this->telefone = $telefone;
-        }
+		$this->nome = $nome;
+	}
 
 
- 	public function getNome(){
+	public function setEmail($email){
 
- 		return $this->nome;
- 	}
+		$this->email = $email;
+	}
 
-
- 	public function getEndereco(){
-
- 		return $this->endereco;
- 	}
+	public function setTelefone($telefone) {
+		$this->telefone = $telefone;
+	}
 
 
- 	public function getEmail(){
+	public function getNome(){
 
- 		return $this->email;
- 	}
+		return $this->nome;
+	}
 
-    public function getIdPessoa() {
-            return $this->idPessoa;
-        }
+	public function getCpf() {
+		return $this->cpf;
+	}
 
-    public function getTelefone() {
-            return $this->telefone;
-        }
+	public function getEmail(){
 
- }
+		return $this->email;
+	}
+
+	public function getIdPessoa() {
+		return $this->idPessoa;
+	}
+
+	public function getTelefone() {
+		return $this->telefone;
+	}
+
+}
 
 
 
@@ -66,4 +61,4 @@ require_once "Endereco.php";
 
 
 
- ?>
+?>

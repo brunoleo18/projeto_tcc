@@ -24,10 +24,11 @@ body{
 
 }
 
-input.but{
+.but{
 
 
-width: 3000px;
+width: 50px;
+height: 40px;
 }
 
 	
