@@ -35,6 +35,18 @@ class Endereco extends model{
 
 }
 
+public function inserirEnd_ofi($id_cpf,$rua,$num,$bairro,$cidade,$estado,$cep,$complemento){
+
+
+
+        $sql = $this->db->prepare("INSERT INTO endereco_ofi SET id_cnpj = ?, rua = ?, num = ?, bairro = ?, cidade = ?, estado = ?, cep = ?, complemento= ?");
+
+        $sql->execute(array($id_cpf,$rua,$num,$bairro,$cidade,$estado,$cep,$complemento));
+
+
+    }
+
+
 //metodos get's
 
     public function getId_cpf(){

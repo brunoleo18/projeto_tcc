@@ -4,7 +4,6 @@
 class Cliente extends Pessoa{
 
     private $profissao; 
-    private $cpf;
     private $categoria; 
     private $cnh;
     private $dataNasc;
@@ -150,6 +149,27 @@ public function editar($nome,$email, $cnh ,$categoria,$profissao, $cpf,$telefone
 
 }
 
+public function nome($cpf){
+
+
+        $sql = $this->db->prepare("SELECT * FROM cliente where cpf= ?");
+
+        $sql->execute(array($cpf));
+
+
+        if($sql->rowCount() > 0){
+
+        $row = $sql->fetch(PDO::FETCH_OBJ);
+        $valor = $row->nome;        
+        $this->setRows($valor);
+
+    }else{
+
+        $this->setRows("");
+    }
+
+    }
+
 // metodos Get's-------------------------------------------------------------------------------------------------
 function getRows(){
 
@@ -161,9 +181,7 @@ function getId_end(){
     return $this->id_end;
 }    
 
-function getCpf() {
-    return $this->cpf;
-}
+
 
 function getProfissao() {
     return $this->profissao;
@@ -210,9 +228,7 @@ function setId_end($id_end) {
     $this->id_end = $id_end;
 }
 
-function setCpf($cpf) {
-    $this->cpf = $cpf;
-}
+
 
 function setProfissao($profissao) {
     $this->profissao = $profissao;

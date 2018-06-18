@@ -127,7 +127,20 @@ class veiculoController extends controller{
 
 		
 
+	}
 
+	public function diaria1(){
+
+		$da = $_POST['idVeiculo'];
+
+		$veic = new veiculo;
+
+		$veic->diaria($da);
+
+		$v =  $veic->getRowV();
+
+
+	    echo $v;
 
 
 	}

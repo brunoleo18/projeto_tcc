@@ -120,6 +120,20 @@ class veiculo extends modelAbstract{
 
 	}
 
+	public function diaria($id){
+
+
+		$sql = $this->db->prepare("SELECT * FROM veiculo where id= ?");
+
+		$sql->execute(array($id));
+
+		$row = $sql->fetch(PDO::FETCH_OBJ);
+		$valor = $row->valor_d;
+
+		
+		$this->setRowV($valor);
+
+}	
 
 //metodos get's e set's
 

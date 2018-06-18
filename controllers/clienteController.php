@@ -193,6 +193,24 @@ class clienteController extends controller{
 	}
 
 
+	public function retornaNome(){
+
+		$da = $_POST['cpf'];
+
+		$cli = new cliente;
+
+		$cli->nome($da);
+
+		$v =  $cli->getRows();
+
+
+	    echo $v;
+
+
+	}
+
+
+
 
 }
 

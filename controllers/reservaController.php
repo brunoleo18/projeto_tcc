@@ -23,6 +23,7 @@ class reservaController extends controller{
 			$reserva->setCpf_cliente(addslashes($_POST['cpf']));
 			$reserva->setData_inicio(addslashes($_POST['data_ini']));
 			$reserva->setData_fim(addslashes($_POST['data_Fim']));
+			$reserva->setValor_reserva(addslashes($_POST['total1']));
 			$reserva->setStatus_reserva(addslashes($_POST['status']));
 
 
@@ -31,9 +32,10 @@ class reservaController extends controller{
 			$data_ini = $reserva->getData_inicio();
 			$data_fim = $reserva->getData_fim();
 			$status = $reserva->getStatus_reserva();
+			$valor_reserva=$reserva->getValor_reserva();
 
 
-			$reserva->verificarDisponibilidade($veiculo,$cliente,$data_ini,$data_fim,$status);
+			$reserva->verificarDisponibilidade($veiculo,$cliente,$data_ini,$data_fim,$valor_reserva,$status);
 
 			header("location:".BASE_URL."chamarTelas/telaReserva");
 
@@ -76,6 +78,43 @@ class reservaController extends controller{
 
 	}
 
+
+	public function excluir($id_reserva){
+
+		$reser = new reserva;
+
+		$reser->deletar($id_reserva);
+
+
+		header("location:".BASE_URL."reserva/mostrar/aberta");
+
+
+
+
+
+	}
+
+
+	public function editar($id_reserva){
+
+
+		if($id_reserva != 'alt'){
+
+			$reser = new reserva;
+
+		$reser->selectEditar($id_reserva);
+		$dados = array('dados' => $reser->getRow());
+
+		$this->loadTemplete('editarReserva',$dados);
+
+
+		}
+
+		
+	}
+
+
+	
 
 
 }

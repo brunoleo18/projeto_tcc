@@ -32,6 +32,11 @@ class chamarTelasController extends controller{
 		$this->loadTemplete('cadastroReserva');
 	}
 
+	public function telaOficina(){
+
+		$this->loadTemplete('cadastroOficina');
+	}
+
 
 
 }

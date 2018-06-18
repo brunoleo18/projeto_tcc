@@ -13,11 +13,12 @@ class reserva extends model{
 	private $status_reserva;
 	private $hora_saida;
 	private $hora_chegada;
+	private $valor_reserva;
 
 	private $row;
 
 
-	public function verificarDisponibilidade($veiculo,$cpf,$data_inicio,$data_fim,$status){
+	public function verificarDisponibilidade($veiculo,$cpf,$data_inicio,$data_fim,$valor_reserva,$status){
 
 
 		$sql = $this->db->prepare("SELECT * FROM reservas WHERE id_veiculo= ? AND (  NOT (data_inicio > ? OR data_fim < ?))");
@@ -41,9 +42,9 @@ class reserva extends model{
 			$km_chegada = "0";
 			$km_rodados ="0";
 
-			$sql = $this->db->prepare("INSERT INTO reservas SET id_cliente= ?, id_veiculo= ?, data_inicio= ?, data_fim=?, status= ?, hora_saida= ?, hora_chegada= ?, km_saida=?, km_chegada= ?, km_rodados = ?");
+			$sql = $this->db->prepare("INSERT INTO reservas SET id_cliente= ?, id_veiculo= ?, data_inicio= ?, data_fim=?, valor_reserva= ?, status= ?, hora_saida= ?, hora_chegada= ?, km_saida=?, km_chegada= ?, km_rodados = ?");
 
-			$sql->execute(array($cpf,$veiculo,$data_inicio,$data_fim, $status, $hora_saida, $hora_chegada, $km_saida, $km_chegada, $km_rodados));
+			$sql->execute(array($cpf,$veiculo,$data_inicio,$data_fim,$valor_reserva, $status, $hora_saida, $hora_chegada, $km_saida, $km_chegada, $km_rodados));
 		}
 
 
@@ -56,7 +57,7 @@ class reserva extends model{
 
 
 
-		$sql = $this->db->prepare("SELECT reservas.id_reserva,reservas.id_cliente,cliente.nome,cliente.email,veiculo.modelo,veiculo.placa,reservas.data_inicio,reservas.data_fim,reservas.status,reservas.hora_saida,reservas.hora_chegada,reservas.km_saida,reservas.km_chegada,reservas.km_rodados FROM reservas inner join veiculo on reservas.id_veiculo=veiculo.id inner join cliente on reservas.id_cliente= cliente.cpf WHERE reservas.status = ? ");
+		$sql = $this->db->prepare("SELECT reservas.id_reserva,reservas.id_cliente,cliente.nome,cliente.email,veiculo.modelo,veiculo.placa,reservas.data_inicio,reservas.data_fim,reservas.valor_reserva,reservas.status,reservas.hora_saida,reservas.hora_chegada,reservas.km_saida,reservas.km_chegada,reservas.km_rodados FROM reservas inner join veiculo on reservas.id_veiculo=veiculo.id inner join cliente on reservas.id_cliente= cliente.cpf WHERE reservas.status = ? ORDER BY reservas.id_reserva desc ");
 
 		$sql->execute(array($status));
 
@@ -80,6 +81,42 @@ class reserva extends model{
 
 
 	}
+
+
+	public function deletar($id_reserva){
+
+		$sql = $this->db->prepare("DELETE FROM reservas where id_reserva= ?");
+		$sql->execute(array($id_reserva));
+
+
+	}
+
+
+	
+		public function SelectEditar($id_reserva){
+
+    if($id_reserva != 'alt'){
+
+        $sql = $this->db->prepare("SELECT * from reservas  where id_reserva = ?");
+
+        $sql->execute(array($id_reserva));
+
+
+        $row = $sql->rowCount();
+
+        if($row > 0){
+
+            $array = $sql->fetch();
+
+            $this->setRow($array);
+        }
+
+
+    }
+
+}
+	
+	
 
 
 
@@ -131,6 +168,11 @@ class reserva extends model{
 		return $this->hora_chegada;
 	}
 
+
+	function getValor_reserva() {
+		return $this->valor_reserva;
+	}
+
 	function setId($id) {
 		$this->id = $id;
 	}
@@ -173,6 +215,10 @@ class reserva extends model{
 
 	function setHora_chegada($hora_chegada) {
 		$this->hora_chegada = $hora_chegada;
+	}
+
+	function setValor_reserva($valor_reserva) {
+		$this->valor_reserva = $valor_reserva;
 	}
 
 

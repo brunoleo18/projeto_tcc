@@ -8,7 +8,7 @@ if(isset($_SESSION['nome']) && !empty($_SESSION['nome'])){
 <head>
 	<title>lista de usuarios</title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL;?>assets/css/telas.css"">
+	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL;?>assets/css/telas.css">
 	
 </head>
 <body>
@@ -34,6 +34,7 @@ if(isset($_SESSION['nome']) && !empty($_SESSION['nome'])){
 		<td>placa</td>
 		<td>data inicio<br> da reserva</td>
 		<td>data <br>chegada</td>
+		<td>Total <br>Reserva</td>
 		<td>status</td>
 		<td>hora saida</td>
 		<td>km saida</td>
@@ -65,6 +66,7 @@ foreach ($dados as $exibir) {
 		<td>".$exibir['placa']."</td>
 		<td>".$exibir['data_inicio']."</td>
 		<td>".$exibir['data_fim']."</td>
+		<td>".$exibir['valor_reserva']."</td>
 		<td>".$exibir['status']."</td>
 		<td>".$exibir['hora_saida']."</td>
 		<td>".$exibir['km_saida']."</td>
@@ -78,7 +80,7 @@ foreach ($dados as $exibir) {
 
 		if($exibir['status'] != 'andamento' && $exibir['status'] != 'finalizada'){
 
-			echo "<a title='Excluir' href='http://localhost/Projeto_tcc/usuario/excluir/".$exibir['id_reserva']."'><img id='img1' src='http://localhost/Projeto_tcc/assets/image/excluir.png'></a></td>";
+			echo "<a title='Excluir' href='http://localhost/Projeto_tcc/reserva/excluir/".$exibir['id_reserva']."'><img id='img1' src='http://localhost/Projeto_tcc/assets/image/excluir.png'></a></td>";
 		}
 	
 
