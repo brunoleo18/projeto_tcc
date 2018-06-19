@@ -47,6 +47,15 @@ public function inserirEnd_ofi($id_cpf,$rua,$num,$bairro,$cidade,$estado,$cep,$c
     }
 
 
+    public function editar_ofi($rua,$num, $bairro,$cidade,$estado,$cep,$complemento,$cnpj){
+
+    $sql = $this->db->prepare("UPDATE endereco_ofi SET rua= ?, num= ?, bairro= ?, cidade=?, estado= ?, cep= ?, complemento= ? WHERE id_cnpj= ?");
+
+    $sql->execute(array($rua,$num, $bairro,$cidade,$estado,$cep,$complemento,$cnpj));
+
+}
+
+
 //metodos get's
 
     public function getId_cpf(){

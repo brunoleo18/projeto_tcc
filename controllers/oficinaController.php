@@ -85,59 +85,54 @@ class oficinaController extends controller{
 	}
 
 
-	public function editar($cpf_del){
+	public function editar($cnpj){
 
-		if($cpf_del != "alt"){
+		if($cnpj != "alt"){
 
 			$oficina = new oficina;
 
-			$oficina->selectEditar($cpf_del);
+			$oficina->selectEditar($cnpj);
 
 			$dados = array('dados' => $oficina->getRows());
 
 
 
-			$this->loadTemplete('editaroficina',$dados);
+			$this->loadTemplete('editarOficina',$dados);
 
 
 
-		}else if ($cpf_del == "alt"){
+		}else if ($cnpj == "alt"){
 
 
 
-			$cpf2 = addslashes($_POST['cpfAntigo']); 
-			
+						
 			$oficina = new oficina;
 			$end= new Endereco;
 
 
-	    $oficina->setNome(addslashes($_POST['nome']));
-		$oficina->setCpf(addslashes($_POST['cpf']));
-		$oficina->setRg(addslashes($_POST['rg']));
+		$oficina->setNome_fantasia(addslashes($_POST['nome_fantasia']));
+		$oficina->setCnpj(addslashes($_POST['cnpj']));
+		$oficina->setRazao_social(addslashes($_POST['razao_social']));
+		$oficina->setFundacao(addslashes($_POST['data']));
+		$oficina->setSegmento(addslashes($_POST['segmento']));		
+		$oficina->setInscricao_social(addslashes($_POST['inscricao']));
 		$oficina->setEmail(addslashes($_POST['email']));
-		$oficina->setSexo(addslashes($_POST['sexo']));		
-		$oficina->setDataNasc(addslashes($_POST['data']));
-		$oficina->setCnh(addslashes($_POST['cnh']));
-		$oficina->setCategoria(addslashes($_POST['categoria']));		
 		$oficina->setTelefone(addslashes($_POST['telefone']));		
-		$oficina->setProfissao(addslashes($_POST['profissao']));
-
 		$oficina->setEndereco($end);
 
 
 
-		$nome = $oficina->getNome();
-		$cpf = $oficina->getCpf();		
-		$rg = $oficina->getRg();		
+		$nome_fantasia = $oficina->getNome_fantasia();
+		$cnpj = $oficina->getCnpj();		
+		$razao_social = $oficina->getRazao_social();		
+		$fundacao = $oficina->getFundacao();
+		$segmento = $oficina->getSegmento();
+		$inscricao_social = $oficina->getInscricao_social();
 		$email = $oficina->getEmail();
-		$sexo = $oficina->getSexo();
-		$dataNasc = $oficina->getDataNasc();
-		$cnh = $oficina->getCnh();
-        $profissao =$oficina->getProfissao();
-		$categoria = $oficina->getCategoria();
-		$telefone = $oficina->getTelefone();
-			
+        $telefone =$oficina->getTelefone();
 
+
+	    
 
 			$oficina->getEndereco()->setRua(addslashes($_POST['rua']));
 			$oficina->getEndereco()->setNum(addslashes($_POST['num']));
@@ -146,7 +141,7 @@ class oficinaController extends controller{
 			$oficina->getEndereco()->setCep(addslashes($_POST['cep']));
 			$oficina->getEndereco()->setEstado(addslashes($_POST['estado']));
 			$oficina->getEndereco()->setComplemento(addslashes($_POST['complemento']));
-			$oficina->getEndereco()->setId_cpf(addslashes($_POST['cpf']));		
+			$oficina->getEndereco()->setId_cpf(addslashes($_POST['cnpj']));		
 
 			$rua = $oficina->getEndereco()->getRua();
 			$num = $oficina->getEndereco()->getNum();
@@ -161,7 +156,7 @@ class oficinaController extends controller{
 
 
 
-			$oficina->editar($nome,$email, $cnh ,$categoria,$profissao, $cpf,$telefone,$dataNasc,$rg,$sexo,$cpf2);
+			$oficina->editar($cnpj,$razao_social, $nome_fantasia ,$fundacao,$inscricao_social, $segmento,$email,$telefone);
 
 
 

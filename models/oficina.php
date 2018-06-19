@@ -63,7 +63,7 @@ class Oficina extends model{
                 $this->getEndereco()->inserirEnd_ofi($this->getEndereco()->getId_cpf(),$this->getEndereco()->getRua(),$this->getEndereco()->getNum(),$this->getEndereco()->getBairro(),$this->getEndereco()->getCidade(),$this->getEndereco()->getEstado(),$this->getEndereco()->getCep(),$this->getEndereco()->getComplemento());
 
                 echo "<SCRIPT>
-                alert('usuario".$nome." Cadstrado com sucesso');
+                alert('Oficina Cadastrada com sucesso');
                 location.href='http://localhost/Projeto_tcc/chamarTelas/telaOficina';
                 </SCRIPT>";
 
@@ -73,7 +73,7 @@ class Oficina extends model{
 
     }
 
-
+    
     // exibi todos os usuarios
 
     public function exibir(){
@@ -106,13 +106,13 @@ class Oficina extends model{
 
 
 
-   public function SelectEditar($cpf_del){
+   public function SelectEditar($cnpj){
 
-    if($cpf_del != 'alt'){
+    if($cnpj != 'alt'){
 
-        $sql = $this->db->prepare("SELECT * from cliente left outer join endereco on cliente.cpf = endereco.id_cpf where cliente.cpf = ?");
+        $sql = $this->db->prepare("SELECT * from oficina left outer join endereco_ofi on oficina.cnpj = endereco_ofi.id_cnpj where oficina.cnpj = ?");
 
-        $sql->execute(array($cpf_del));
+        $sql->execute(array($cnpj));
 
 
         $row = $sql->rowCount();
@@ -130,15 +130,15 @@ class Oficina extends model{
 }
 
 
-public function editar($nome,$email, $cnh ,$categoria,$profissao, $cpf,$telefone,$dataNasc,$rg,$sexo,$cpf2){
+public function editar($cnpj,$razao_social, $nome_fantasia ,$fundacao,$inscricao_social, $segmento,$email,$telefone){
 
-    $sql = $this->db->prepare("UPDATE cliente SET cpf= ?, nome= ?, email= ?, cnh= ?, categoria= ?, profissao=?,  telefone= ?, data_nasc= ?, rg= ?, sexo= ? WHERE cpf= ?");
+    $sql = $this->db->prepare("UPDATE oficina SET  razao_social= ?, nome_fantasia= ?,fundacao = ?, inscricao_social= ?, segmento= ?, email=?, telefone= ? where cnpj= ?");
 
-    $sql->execute(array($cpf,$nome,$email, $cnh ,$categoria,$profissao, $telefone,$dataNasc,$rg,$sexo,$cpf2));
+    $sql->execute(array($razao_social, $nome_fantasia ,$fundacao,$inscricao_social, $segmento,$email,$telefone,$cnpj));
 
 
 
-    $this->getEndereco()->editar($this->getEndereco()->getRua(),$this->getEndereco()->getNum(),$this->getEndereco()->getBairro(),$this->getEndereco()->getCidade(),$this->getEndereco()->getEstado(),$this->getEndereco()->getCep(),$this->getEndereco()->getComplemento(),$cpf2);
+    $this->getEndereco()->editar_ofi($this->getEndereco()->getRua(),$this->getEndereco()->getNum(),$this->getEndereco()->getBairro(),$this->getEndereco()->getCidade(),$this->getEndereco()->getEstado(),$this->getEndereco()->getCep(),$this->getEndereco()->getComplemento(),$cnpj);
 
 
 

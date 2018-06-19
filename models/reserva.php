@@ -14,6 +14,7 @@ class reserva extends model{
 	private $hora_saida;
 	private $hora_chegada;
 	private $valor_reserva;
+	private $km_rodados;
 
 	private $row;
 
@@ -25,15 +26,13 @@ class reserva extends model{
 
 		$sql->execute(array($veiculo,$data_fim,$data_inicio ));
 
+		$cout = $sql->rowCount();
 
-		if($sql->rowCount() > 0){
+		if($cout > 0){
 
-			echo "<SCRIPT>
-			alert('VEICULO NÃO DISPONIVEL NO PERIODO!');
-			location.href='http://localhost/Projeto_tcc/chamarTelas/telaReserva';
-			</SCRIPT>";
+			$this->setRow($cout);
 
-
+			
 		}else{
 
 			$hora_saida= "0";
@@ -93,28 +92,49 @@ class reserva extends model{
 
 
 	
-		public function SelectEditar($id_reserva){
+	public function SelectEditar($id_reserva){
 
-    if($id_reserva != 'alt'){
+		if($id_reserva != 'alt'){
 
-        $sql = $this->db->prepare("SELECT * from reservas  where id_reserva = ?");
+			$sql = $this->db->prepare("SELECT * from reservas  where id_reserva = ?");
 
-        $sql->execute(array($id_reserva));
-
-
-        $row = $sql->rowCount();
-
-        if($row > 0){
-
-            $array = $sql->fetch();
-
-            $this->setRow($array);
-        }
+			$sql->execute(array($id_reserva));
 
 
-    }
+			$row = $sql->rowCount();
 
-}
+			if($row > 0){
+
+				$array = $sql->fetch();
+
+				$this->setRow($array);
+			}
+
+
+		}
+
+	}
+
+
+	public function editar($id,$veiculo,$cliente,$data_ini,$data_fim,$status,$valor_reserva,$hora_saida,$hora_chegada,$km_saida,$km_chegada,$km_rodados){
+
+		
+
+		$sql = $this->db->prepare("UPDATE reservas SET id_veiculo=?, id_cliente=?, data_inicio= ?, data_fim=?, valor_reserva=?, status=?, hora_saida=?, hora_chegada=?, km_saida=?, km_chegada=?, km_rodados=? where id_reserva=?");
+
+		$sql->execute(array($veiculo,$cliente,$data_ini,$data_fim,$valor_reserva,$status,$hora_saida,$hora_chegada,$km_saida,$km_chegada,$km_rodados,$id));
+
+
+		echo "<SCRIPT>
+			alert('Reserva atualizada com sucesso');
+			
+			</SCRIPT>";
+
+
+
+
+
+	}
 	
 	
 
@@ -173,6 +193,14 @@ class reserva extends model{
 		return $this->valor_reserva;
 	}
 
+	function getKm_rodados(){
+
+		return $this->km_rodados; 
+	}
+
+
+	//-----------metodos set's
+
 	function setId($id) {
 		$this->id = $id;
 	}
@@ -219,6 +247,11 @@ class reserva extends model{
 
 	function setValor_reserva($valor_reserva) {
 		$this->valor_reserva = $valor_reserva;
+	}
+
+	function setKm_rodados($km_rodados){
+
+		$this->km_rodados = $km_rodados;
 	}
 
 

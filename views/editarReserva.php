@@ -1,15 +1,6 @@
 <?php
 if(isset($_SESSION['nome']) && !empty($_SESSION['nome'])){
-	var_dump($dados);
-
-	foreach ($dados as $exibir) {
-
-		echo $exibir."<br>";
-
-		
-	}
-
-
+	//var_dump($info);
 
 	?>
 	<!DOCTYPE html>
@@ -18,7 +9,7 @@ if(isset($_SESSION['nome']) && !empty($_SESSION['nome'])){
 
 	</script>  
 	<meta charset="utf-8">
-	<title>Cadastro de Usuario</title>
+	<title>Cadastro de Reserva</title>
 	<script type="text/javascript" src="<?php echo BASE_URL;?>assets/js/jquery.js"></script>
 	<script type="text/javascript" src="<?php echo BASE_URL;?>assets/js/moment.js"></script>
 
@@ -61,7 +52,21 @@ if(isset($_SESSION['nome']) && !empty($_SESSION['nome'])){
 			
 			alert(total);
 
-		}		
+		}	
+
+
+		function kmRodado(kmF){
+
+			
+			var kmI = document.getElementById("kmI").value;
+
+			var tot = kmF - kmI;
+
+
+			$('#totalKm').val(tot);
+
+
+		}	
 
 
 	</script>
@@ -95,7 +100,7 @@ if(isset($_SESSION['nome']) && !empty($_SESSION['nome'])){
 
 		<a href="<?php echo BASE_URL;?>chamarTelas/voltar"><input type="button" name="" value="voltar"></a>
 
-		<form action="<?php echo BASE_URL;?>reserva/inserir" method="POST" >
+		<form action="<?php echo BASE_URL;?>reserva/editar/alt" method="POST" >
 
 			<fieldset >
 
@@ -105,11 +110,11 @@ if(isset($_SESSION['nome']) && !empty($_SESSION['nome'])){
 
 					<tr>
 						<td><label>ID:</label></td>
-						<td><input type="text" name="id" readonly value="<?php echo $dados['0'];?>"></td>
+						<td><input type="text" name="id" readonly value="<?php echo $info['0'];?>"></td>
 
 						<tr>
 							<td><label>CPF:</label></td>
-							<td><input type="cpf" name="cpf" placeholder="000.000.000-00" size="14" value="<?php echo $dados['1'];?>" id="cpf" onChange="nomeRetorno(this.value)" required maxlength="11" autocomplete="off"></td>
+							<td><input type="cpf" name="cpf" placeholder="000.000.000-00" size="14" value="<?php echo $info['1'];?>" id="cpf" onChange="nomeRetorno(this.value)" required maxlength="11" autocomplete="off"></td>
 
 
 
@@ -117,7 +122,7 @@ if(isset($_SESSION['nome']) && !empty($_SESSION['nome'])){
 							<tr>
 								<td><label>Veiculo:</label></td>
 								<td><select name="veiculo" onChange="diaria1(this.value)">
-									<option value="<?php echo $dados['2'];?>"><?php echo $dados['2'];?></option>		
+									<option value="<?php echo $info['2'];?>"><?php echo $info['2'];?></option>		
 
 									<?php
 
@@ -145,24 +150,24 @@ if(isset($_SESSION['nome']) && !empty($_SESSION['nome'])){
 
 							<tr>
 								<td><label>data inicio:</label></td>
-								<td><input type="date" name="data_ini"  id="dataIni" ></td>
+								<td><input type="date" name="data_ini" 	value="<?php echo $info['3'];?>" id="dataIni" ></td>
 							</tr>
 
 
 							<tr>
 								<td><label>data final  : </label></td>
-								<td><input type="date" name="data_Fim" id="dataF"  onChange="calc_total(this.value)"></td>
+								<td><input type="date" name="data_Fim" id="dataF" value="<?php echo $info['4'];?>" onChange="calc_total(this.value)"></td>
 
 							</tr>			
 							<tr>
 
 								<td><label>Total Reserva:</label></td>
-								<td><input type="num" name="total1" id="total" required readonly></td>
+								<td><input type="num" name="total1" id="total" value="<?php echo $info['5'];?>" required readonly></td>
 							</tr>
 
 							<tr><td><label>Status:</label></td>
 								<td><select name="status" required="">
-									<option >seleciona</option>
+									<option value="<?php echo $info['6'];?>"><?php echo $info['6'];?></option>
 									<option value ="andamento">Andamento</option>
 									<option value="finalizada">Finalizada</option>
 								</select></td>
@@ -172,24 +177,24 @@ if(isset($_SESSION['nome']) && !empty($_SESSION['nome'])){
 							<tr>
 
 								<td><label>Hora saida:</label></td>
-								<td><input type="text" name="hora_saida" required ></td>
+								<td><input type="time" name="hora_saida" value="<?php echo $info['7'];?>" required ></td>
 								<td><label>Hora chegada:</label></td>
-								<td><input type="text" name="hora_chegada"  required ></td>
+								<td><input type="time" name="hora_chegada" value="<?php echo $info['8'];?>" required ></td>
 
 							</tr>
 
 							<tr>
 
 								<td><label>KM saida:</label></td>
-								<td><input type="text" name="km_saida"  required ></td>
+								<td><input type="text" name="km_saida" value="<?php echo $info['9'];?>" id="kmI"  required ></td>
 								<td><label>Km chegada:</label></td>
-								<td><input type="text" name="km_chegada"required></td>
-
+								<td><input type="text" name="km_chegada" value="<?php echo $info['10'];?>" id="KmF" onChange="kmRodado(this.value)" required></td>
 							</tr>
+
 
 							<tr>
 								<td><label>Km Rodados:</label></td>
-								<td><input type="text" name="Km_rodados" ></td>
+								<td><input type="text" name="Km_rodados" value="<?php echo $info['11'];?>" id="totalKm" ></td>
 
 							</tr>
 
@@ -199,7 +204,7 @@ if(isset($_SESSION['nome']) && !empty($_SESSION['nome'])){
 						</table>
 
 
-						<tr><td><input type="submit" name="enviar" value="Cadastrar_Reserva" ></td>
+						<tr><td><input type="submit" name="enviar" value="Atualizar_Reserva" ></td>
 							<td></td>
 						</tr>
 

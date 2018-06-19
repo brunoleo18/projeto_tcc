@@ -37,11 +37,20 @@ class reservaController extends controller{
 
 			$reserva->verificarDisponibilidade($veiculo,$cliente,$data_ini,$data_fim,$valor_reserva,$status);
 
+
+			if(empty($reserva->getRow())){
+
 			header("location:".BASE_URL."chamarTelas/telaReserva");
 
+		}else{
 
+			echo "<SCRIPT>
+			alert('VEICULO NÃO DISPONIVEL NO PERIODO!');
+			location.href='http://localhost/Projeto_tcc/chamarTelas/telaReserva';
+			</SCRIPT>";
 		}
 	}
+}
 
 	public function mostrar($status){
 
@@ -103,12 +112,66 @@ class reservaController extends controller{
 			$reser = new reserva;
 
 		$reser->selectEditar($id_reserva);
-		$dados = array('dados' => $reser->getRow());
+		$dados2 = array('info' => $reser->getRow());
 
-		$this->loadTemplete('editarReserva',$dados);
+		$this->loadTemplete('editarReserva',$dados2);
+
+
+		}else if($id_reserva == 'alt'){
+
+
+			$reserva = new reserva;
+
+			
+			$reserva->setId(addslashes($_POST['id']));
+
+
+			$reserva->setId_veiculo(addslashes($_POST['veiculo']));
+			$reserva->setCpf_cliente(addslashes($_POST['cpf']));
+			$reserva->setData_inicio(addslashes($_POST['data_ini']));
+			$reserva->setData_fim(addslashes($_POST['data_Fim']));
+			$reserva->setValor_reserva(addslashes($_POST['total1']));
+			$reserva->setStatus_reserva(addslashes($_POST['status']));
+			$reserva->setHora_saida(addslashes($_POST['hora_saida']));
+			$reserva->setHora_chegada(addslashes($_POST['hora_chegada']));
+			$reserva->setKm_saida(addslashes($_POST['km_saida']));
+			$reserva->setKm_chegada(addslashes($_POST['km_chegada']));
+			$reserva->setKm_rodados(addslashes($_POST['Km_rodados']));
+
+
+
+
+			$id = $reserva->getId();
+
+
+			$veiculo = $reserva->getId_veiculo();
+			$cliente = $reserva->getCpf_cliente();
+			$data_ini = $reserva->getData_inicio();
+			$data_fim = $reserva->getData_fim();
+			$status = $reserva->getStatus_reserva();
+			$valor_reserva=$reserva->getValor_reserva();
+			$hora_saida = $reserva->getHora_saida();
+			$hora_chegada = $reserva->getHora_chegada();
+			$km_saida = $reserva->getKm_saida();
+			$km_chegada= $reserva->getKm_chegada();
+			$km_rodados = $reserva->getKm_rodados();
+
+
+			$reserva->editar($id,$veiculo,$cliente,$data_ini,$data_fim,$status,$valor_reserva,$hora_saida,$hora_chegada,$km_saida,$km_chegada,$km_rodados);
+
+
+			header('location: http://localhost/Projeto_tcc/reserva/mostrar/'.$status);	
+			
+
+
+
 
 
 		}
+
+
+
+
 
 		
 	}

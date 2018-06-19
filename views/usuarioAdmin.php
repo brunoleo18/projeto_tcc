@@ -51,7 +51,11 @@ if(isset($_SESSION['nome']) && !empty($_SESSION['nome'])){
 		<nav id="menu" >
             <ul style="list-style: none; padding: 10px; margin: 0px;">
                 <li><a href="<?php echo BASE_URL;?>chamarTelas/telaCadastro">Cadastro de Usuarios.</a></li>
-                <li><a href="<?php echo BASE_URL;?>chamarTelas/telaVeiculo">Cadastro de Veiculos.</a></li>
+                <li><a href="<?php echo BASE_URL;?>chamarTelas/telaVeiculo">Cadastro de Veiculos.</a>
+                  <li><a href="">marcas</a></li>
+
+
+                </li>
                 <li><a href="<?php echo BASE_URL;?>chamarTelas/telaCliente">Cadastro de Clientes.</a></li>
                 <li><a href="<?php echo BASE_URL;?>chamarTelas/telaReserva">Cadastro de Reservas.</a></li>
                 <li><a href="<?php echo BASE_URL;?>chamarTelas/telaOficina">Oficina</a></li>
@@ -66,7 +70,9 @@ if(isset($_SESSION['nome']) && !empty($_SESSION['nome'])){
       <nav id="menu2" style="display: inline;">
         <ul style="list-style: none; padding: 10px; margin: 0px;">
             <li><a href="<?php echo BASE_URL;?>usuario/mostrar">Pesquisar Usuarios.</a></li>
-            <li><a href="<?php echo BASE_URL;?>veiculo/mostrar">Pesquisar Veiculos.</a></li>
+            <li><a href="<?php echo BASE_URL;?>veiculo/mostrar">Pesquisar Veiculos.</a>
+              <ul><li><a href="#">Marcas</a></li></ul>
+            </li>
             <li><a href="<?php echo BASE_URL;?>cliente/mostrar"">pesquisar Clientes.</a></li>
             <li><a href="<?php echo BASE_URL;?>reserva/mostrar/aberta">Pesquisar Reservas.</a></li>
             <li><a href="<?php echo BASE_URL;?>oficina/mostrar">Oficinas</a></li>

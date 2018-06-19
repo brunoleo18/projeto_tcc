@@ -16,7 +16,7 @@ if(isset($_SESSION['nome']) && !empty($_SESSION['nome'])){
  <a href="<?php echo BASE_URL;?>chamarTelas/voltar"><input type="button" name="" value="voltar"></a><br><br>
 <div class="divTab">
 
-	<h2 >Lista De Clientes cadastrados</h2>
+	<h2 >Lista De Oficinas cadastradas</h2>
 
 <table class="tab" border="1" >
 	
