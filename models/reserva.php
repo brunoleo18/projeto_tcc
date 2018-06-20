@@ -116,6 +116,9 @@ class reserva extends model{
 	}
 
 
+
+
+
 	public function editar($id,$veiculo,$cliente,$data_ini,$data_fim,$status,$valor_reserva,$hora_saida,$hora_chegada,$km_saida,$km_chegada,$km_rodados){
 
 		
@@ -135,6 +138,7 @@ class reserva extends model{
 
 
 	}
+
 	
 	
 

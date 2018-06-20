@@ -135,6 +135,21 @@ class veiculo extends modelAbstract{
 
 }	
 
+public function km($id){
+
+
+		$sql = $this->db->prepare("SELECT * FROM veiculo where id= ?");
+
+		$sql->execute(array($id));
+
+		$row = $sql->fetch(PDO::FETCH_OBJ);
+		$valor = $row->km_a;
+
+		
+		$this->setRowV($valor);
+
+}	
+
 //metodos get's e set's
 
 	public function getId() {

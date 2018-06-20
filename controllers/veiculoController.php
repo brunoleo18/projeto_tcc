@@ -145,6 +145,22 @@ class veiculoController extends controller{
 
 	}
 
+	public function km1(){
+
+		$da = $_POST['idVeiculo'];
+
+		$veic = new veiculo;
+
+		$veic->km($da);
+
+		$v =  $veic->getRowV();
+
+
+	    echo $v;
+
+
+	}
+
 
 }
 
