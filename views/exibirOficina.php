@@ -18,7 +18,7 @@ if(isset($_SESSION['nome']) && !empty($_SESSION['nome'])){
 
 	<h2 >Lista De Oficinas cadastradas</h2>
 
-<table class="tab" border="1" >
+<table class="tab" border="1" style="border-collapse: collapse;">
 	
 	<b><tr id="tr">
 		

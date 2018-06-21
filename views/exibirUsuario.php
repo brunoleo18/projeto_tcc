@@ -18,7 +18,7 @@ if(isset($_SESSION['nome']) && !empty($_SESSION['nome'])){
 
 	<h2 >Lista De usuarios cadastrados</h2>
 
-<table class="tab" border="1" style="font-size: 20px;" >
+<table class="tab" border="1" style="font-size: 20px; border-collapse: collapse;" >
 	
 	<b><tr id="tr">
 		
@@ -26,6 +26,7 @@ if(isset($_SESSION['nome']) && !empty($_SESSION['nome'])){
 		<td>nome</td>
 		<td>email</td>
 		<td>telefone</td>
+		<td>titulo</td>
 		<td>tipo</td>
 		<td>data nascimento</td>
 		<td>RG</td>
@@ -47,6 +48,7 @@ foreach ($dados as $exibir) {
 		<td id='nome'>".$exibir['nome']."</td>
 		<td>".$exibir['email']."</td>
 		<td>".$exibir['telefone']."</td>
+		<td>".$exibir['titulo']."</td>
 		<td>".$exibir['tipo']."</td>
 		<td>".$exibir['dataNasc']."</td>
 		<td>".$exibir['rg']."</td>

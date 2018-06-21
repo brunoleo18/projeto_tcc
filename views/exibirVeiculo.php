@@ -18,7 +18,7 @@ if(isset($_SESSION['nome']) && !empty($_SESSION['nome'])){
 
 	<h2 >Lista De Veiculos cadastrados</h2>
 
-<table class="tabV" s >
+<table class="tabV" border="2" style="border-collapse: collapse;" >
 
 
 	
@@ -32,7 +32,7 @@ if(isset($_SESSION['nome']) && !empty($_SESSION['nome'])){
 		<td>combustivel</td>
 		<td>valor diaria</td>
 		<td>KM inicial</td>
-		<td>Km final</td>
+		<td>Km Atual</td>
 		<td>chassis</td>
 		<td>documento</td>
 		<td>Ações</td>

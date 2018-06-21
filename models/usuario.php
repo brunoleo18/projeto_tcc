@@ -3,6 +3,7 @@
 
 class Usuario extends Pessoa{
 
+    private $titulo;
     private $senha; 
     private $tipo;
     private $dataNasc;
@@ -41,7 +42,7 @@ class Usuario extends Pessoa{
 
     //metodo que insere usuario no banco
 
-    public function inserir($nome,$email,$senha, $cpf,$telefone,$tipo,$dataNasc,$rg,$sexo){
+    public function inserir($nome,$email,$senha, $cpf,$telefone,$titulo,$tipo,$dataNasc,$rg,$sexo){
 
       //verifica se o CPF ja esta cadastrado
         $sql = $this->db->prepare("SELECT * from usuario where cpf=?");
@@ -77,8 +78,8 @@ class Usuario extends Pessoa{
 
                 // se nenhum dos dois esta cadastrado ele insere os dados no banco
 
-                $sql = $this->db->prepare("INSERT INTO usuario SET nome = ?, email = ?, senha = ?, cpf = ?, telefone = ?, tipo = ?, dataNasc= ?, rg= ?, sexo= ?");
-                $sql->execute(array($nome,$email ,$senha, $cpf,$telefone,$tipo,$dataNasc,$rg,$sexo));
+                $sql = $this->db->prepare("INSERT INTO usuario SET nome = ?, email = ?, senha = ?, cpf = ?, telefone = ?, titulo=?, tipo = ?, dataNasc= ?, rg= ?, sexo= ?");
+                $sql->execute(array($nome,$email ,$senha, $cpf,$telefone,$titulo,$tipo,$dataNasc,$rg,$sexo));
 
                 
                 echo "<SCRIPT>
@@ -149,11 +150,11 @@ class Usuario extends Pessoa{
 }
 
 
-public function editar($nome,$email, $cpf,$telefone,$tipo,$dataNasc,$rg,$sexo,$cpf2){
+public function editar($nome,$email, $cpf,$telefone,$titulo,$tipo,$dataNasc,$rg,$sexo,$cpf2){
 
-    $sql = $this->db->prepare("UPDATE usuario SET cpf= ?, nome= ?, email= ?,  telefone= ?, tipo= ?, dataNasc= ?, rg= ?, sexo= ? WHERE cpf= ?");
+    $sql = $this->db->prepare("UPDATE usuario SET cpf= ?, nome= ?, email= ?,  telefone= ?, titulo=?, tipo= ?, dataNasc= ?, rg= ?, sexo= ? WHERE cpf= ?");
 
-    $sql->execute(array($cpf,$nome,$email,$telefone,$tipo,$dataNasc,$rg,$sexo,$cpf2));
+    $sql->execute(array($cpf,$nome,$email,$telefone,$titulo,$tipo,$dataNasc,$rg,$sexo,$cpf2));
 
 
 
@@ -168,6 +169,11 @@ public function editar($nome,$email, $cpf,$telefone,$tipo,$dataNasc,$rg,$sexo,$c
 }
 
 // metodos Get's-------------------------------------------------------------------------------------------------
+function getTitulo(){
+
+    return $this->titulo;
+}   
+
 function getRows(){
 
     return $this->rows;
@@ -201,6 +207,9 @@ function getDataAdmis() {
 }
 
       //metodos set's
+function setTitulo($titulo) {
+    $this->titulo = $titulo;
+}
 
 function setRows($rows) {
     $this->rows = $rows;

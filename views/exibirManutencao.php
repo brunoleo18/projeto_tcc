@@ -25,7 +25,7 @@ if(isset($_SESSION['nome']) && !empty($_SESSION['nome'])){
 
 	<h2 >Lista De manutenção</h2>
 
-<table class="tab2" border="1"  >
+<table class="tab2" border="1" style="border-collapse: collapse;" >
 	
 	<b><tr id="tr">
 		
@@ -49,7 +49,7 @@ if(isset($_SESSION['nome']) && !empty($_SESSION['nome'])){
 
 if(empty($dados)){
 
-echo "<tr><td><h1>NÃO HÁ RESERVAS!</h1></td></tr>";
+echo "<tr><td><h1>NÃO HÁ MANUTENÇÃO EM ABERTO!</h1></td></tr>";
 }else{
 
 foreach ($dados as $exibir) {
@@ -81,10 +81,11 @@ foreach ($dados as $exibir) {
 }
 	}
 
- ?>
-
+ 
+?>
 
  </table >
+ 
 </div>
  </body>
 </html>

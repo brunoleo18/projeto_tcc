@@ -81,6 +81,9 @@ if(isset($_SESSION['nome']) && !empty($_SESSION['nome'])){
 									<option value="0">Usuario</option>
 								</select></td>
 
+								<td><label>Titulo:</label></td>
+								<td><input type="titulo" name="titulo" ></td>
+
 							</tr> 
 
 							<tr>

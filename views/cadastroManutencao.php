@@ -41,7 +41,7 @@ if(isset($_SESSION['nome']) && !empty($_SESSION['nome'])){
 	}
 
 	.div_user{
-		background-color: #FFF68F;
+		background-color: #808000;
 		padding: 10px;
 	}
 

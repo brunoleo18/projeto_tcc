@@ -59,7 +59,8 @@ class usuarioController extends controller{
 		$usuario->setSexo(addslashes($_POST['sexo']));		
 		$usuario->setDataNasc(addslashes($_POST['data']));
 		$usuario->setTipo(addslashes($_POST['tipo']));		
-		$usuario->setTelefone(addslashes($_POST['telefone']));		
+		$usuario->setTelefone(addslashes($_POST['telefone']));
+		$usuario->setTitulo(addslashes($_POST['titulo']));		
 		$usuario->setSenha(addslashes(md5($_POST['senha'])));
 
 		$nome = $usuario->getNome();
@@ -70,10 +71,11 @@ class usuarioController extends controller{
 		$dataNasc = $usuario->getDataNasc();
 		$tipo = $usuario->getTipo();
 		$telefone = $usuario->getTelefone();
+		$titulo = $usuario->getTitulo();
 		$senha = $usuario->getSenha(); 	
 
 		
-		$usuario->inserir($nome,$email ,$senha, $cpf,$telefone,$tipo,$dataNasc,$rg,$sexo);
+		$usuario->inserir($nome,$email ,$senha, $cpf,$telefone,$titulo,$tipo,$dataNasc,$rg,$sexo);
 
 
 		     // $this->loadTemplete('cadastroUsuario');
@@ -128,9 +130,10 @@ class usuarioController extends controller{
 			$usuario->setEmail(addslashes($_POST['email']));
 			$usuario->setSexo(addslashes($_POST['sexo']));		
 			$usuario->setDataNasc(addslashes($_POST['data']));
-			$usuario->setTipo(addslashes($_POST['tipo']));		
+			$usuario->setTipo(addslashes($_POST['tipo']));	
+			$usuario->setTitulo(addslashes($_POST['titulo']));	
 			$usuario->setTelefone(addslashes($_POST['telefone']));		
-			$usuario->setEndereco($end);
+			
 
 			$nome = $usuario->getNome();
 			$cpf = $usuario->getCpf();		
@@ -140,31 +143,13 @@ class usuarioController extends controller{
 			$dataNasc = $usuario->getDataNasc();
 			$tipo = $usuario->getTipo();
 			$telefone = $usuario->getTelefone();
+			$titulo = $usuario->getTitulo();
 			$senha = $usuario->getSenha(); 	
 
-			$usuario->getEndereco()->setRua(addslashes($_POST['rua']));
-			$usuario->getEndereco()->setNum(addslashes($_POST['num']));
-			$usuario->getEndereco()->setBairro(addslashes($_POST['bairro']));
-			$usuario->getEndereco()->setCidade(addslashes($_POST['cidade']));
-			$usuario->getEndereco()->setCep(addslashes($_POST['cep']));
-			$usuario->getEndereco()->setEstado(addslashes($_POST['estado']));
-			$usuario->getEndereco()->setComplemento(addslashes($_POST['complemento']));
-			$usuario->getEndereco()->setId_cpf(addslashes($_POST['cpf']));		
-
-			$rua = $usuario->getEndereco()->getRua();
-			$num = $usuario->getEndereco()->getNum();
-			$bairro = $usuario->getEndereco()->getBairro();
-			$cidade = $usuario->getEndereco()->getCidade();
-			$cep = $usuario->getEndereco()->getCep();
-			$estado = $usuario->getEndereco()->getEstado();
-			$complemento = $usuario->getEndereco()->getComplemento();
+			
 
 
-
-
-
-
-			$usuario->editar($nome,$email,$cpf,$telefone,$tipo,$dataNasc,$rg,$sexo,$cpf2);
+			$usuario->editar($nome,$email,$cpf,$telefone,$titulo,$tipo,$dataNasc,$rg,$sexo,$cpf2);
 
 
 

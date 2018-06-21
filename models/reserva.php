@@ -96,7 +96,7 @@ class reserva extends model{
 
 		if($id_reserva != 'alt'){
 
-			$sql = $this->db->prepare("SELECT * from reservas  where id_reserva = ?");
+			$sql = $this->db->prepare("SELECT *,veiculo.modelo,veiculo.placa,veiculo.valor_d from reservas inner join veiculo on reservas.id_veiculo=veiculo.id  where id_reserva = ?");
 
 			$sql->execute(array($id_reserva));
 
@@ -126,6 +126,16 @@ class reserva extends model{
 		$sql = $this->db->prepare("UPDATE reservas SET id_veiculo=?, id_cliente=?, data_inicio= ?, data_fim=?, valor_reserva=?, status=?, hora_saida=?, hora_chegada=?, km_saida=?, km_chegada=?, km_rodados=? where id_reserva=?");
 
 		$sql->execute(array($veiculo,$cliente,$data_ini,$data_fim,$valor_reserva,$status,$hora_saida,$hora_chegada,$km_saida,$km_chegada,$km_rodados,$id));
+
+
+		if($status = 'finalizada'){
+
+			//ao finalizar a reserva o sistema altera a quilometragem do veiculo na tabela veiculo
+
+		$sql2 = $this->db->prepare("UPDATE veiculo SET km_a= km_a +? where id= ?");
+		$sql2->execute(array($km_rodados,$veiculo));
+	}
+
 
 
 		echo "<SCRIPT>

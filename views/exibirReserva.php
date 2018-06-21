@@ -23,7 +23,7 @@ if(isset($_SESSION['nome']) && !empty($_SESSION['nome'])){
 
 	<h2 >Lista De Reservas</h2>
 
-<table class="tab2" border="1"  >
+<table class="tab2" border="1" style="border-collapse: collapse;" >
 	
 	<b><tr id="tr">
 		

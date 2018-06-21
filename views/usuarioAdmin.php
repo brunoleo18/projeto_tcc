@@ -50,12 +50,13 @@ if(isset($_SESSION['nome']) && !empty($_SESSION['nome'])){
 
 		<nav id="menu" >
             <ul style="list-style: none; padding: 10px; margin: 0px;">
-                <li><a href="<?php echo BASE_URL;?>chamarTelas/telaCadastro">Cadastro de Usuarios.</a></li>
-                <li><a href="<?php echo BASE_URL;?>chamarTelas/telaVeiculo">Cadastro de Veiculos.</a></li>
-                <li><a href="<?php echo BASE_URL;?>chamarTelas/telaCliente">Cadastro de Clientes.</a></li>
-                <li><a href="<?php echo BASE_URL;?>chamarTelas/telaReserva">Cadastro de Reservas.</a></li>
-                <li><a href="<?php echo BASE_URL;?>chamarTelas/telaOficina">Oficina</a></li>
-                <li><a href="<?php echo BASE_URL;?>chamarTelas/telaManutencao">Manutenção</a></li>
+                <li><a href="<?php echo BASE_URL;?>chamarTelas/telaCadastro">1.Cadastro de Usuarios.</a></li>
+                <li><a href="<?php echo BASE_URL;?>chamarTelas/telaVeiculo">2.Cadastro de Veiculos.</a></li>
+                <li><a href="<?php echo BASE_URL;?>chamarTelas/telaCliente">3.Cadastro de Clientes.</a></li>
+                <li><a href="<?php echo BASE_URL;?>chamarTelas/telaReserva">4.Cadastro de Reservas.</a></li>
+                <li><a href="<?php echo BASE_URL;?>chamarTelas/telaOficina">5.Oficina</a></li>
+                <li><a href="<?php echo BASE_URL;?>chamarTelas/telaManutencao">6.Manutenção</a></li>
+                <li><a style="background-color: #7FFF00;" href="<?php echo BASE_URL;?>chamarTelas/telaAbastecimento">7.Abastecimento</a></li>
             </ul>
         </nav>
 
@@ -71,6 +72,7 @@ if(isset($_SESSION['nome']) && !empty($_SESSION['nome'])){
             <li><a href="<?php echo BASE_URL;?>reserva/mostrar/aberta">Pesquisar Reservas.</a></li>
             <li><a href="<?php echo BASE_URL;?>oficina/mostrar">Oficinas</a></li>
             <li><a href="<?php echo BASE_URL;?>manutencao/mostrar/aberta">Pesquisar Manutenção</a></li>
+            <li><a style="background-color: #7FFF00;" href="<?php echo BASE_URL;?>abastecimento/mostrar">7.Abastecimento</a></li>
         </ul>
     </nav>
 

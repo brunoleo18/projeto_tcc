@@ -43,7 +43,7 @@ if(isset($_SESSION['nome']) && !empty($_SESSION['nome'])){
 	}
 
 	.div_user{
-		background-color: #FFF68F;
+		background-color: #808000;
 		padding: 10px;
 	}
 
@@ -136,7 +136,7 @@ if(isset($_SESSION['nome']) && !empty($_SESSION['nome'])){
 
 								<td><label>Status:</label></td>
 								<td><select name="status">
-									<option value="<?php echo $info['5'];?>"><?php echo $info['5'];?>"</option>
+									<option value="<?php echo $info['5'];?>"><?php echo $info['5'];?></option>
 									<option value="aberta">Aberta</option>
 									<option value="fechada">Fechada</option>
 									

@@ -122,7 +122,7 @@ if(isset($_SESSION['nome']) && !empty($_SESSION['nome'])){
 							<tr>
 								<td><label>Veiculo:</label></td>
 								<td><select name="veiculo" onChange="diaria1(this.value)">
-									<option value="<?php echo $info['2'];?>"><?php echo $info['2'];?></option>		
+									<option value="<?php echo $info['2'];?>"><?php echo $info['modelo']."--".$info['placa'];?></option>		
 
 									<?php
 
@@ -143,7 +143,7 @@ if(isset($_SESSION['nome']) && !empty($_SESSION['nome'])){
 
 								</select></td>
 								<td><label>Valor Diaria</label></td>
-								<td><input type="text" name="diaria" id="diaria2"  readonly=""></td>
+								<td><input type="text" name="diaria" id="diaria2" value="<?php echo $info['valor_d'];?>" id="dataIni" readonly=""></td>
 							</tr>
 
 

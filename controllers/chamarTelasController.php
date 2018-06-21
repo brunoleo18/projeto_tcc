@@ -42,6 +42,11 @@ class chamarTelasController extends controller{
 		$this->loadTemplete('cadastroManutencao');
 	}
 
+	public function telaAbastecimento(){
+
+		$this->loadTemplete('cadastroAbastecimento');
+	}
+
 
 
 }
